@@ -73,7 +73,7 @@ function GoSee(props) {
             maxHeight={data?.maxHeight}
             maxWidth={data?.maxWidth}
             position={{ x: 10, y: 10 }}
-            className="bg_kanban"
+            className="bg_goSee"
             onDragStop={(e, d) => {
                 // setX1(d.x); setY1(d.y);
             }}
