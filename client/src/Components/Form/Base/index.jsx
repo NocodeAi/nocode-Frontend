@@ -90,6 +90,7 @@ function Base(props) {
 
     const handleOnDrop = (event) => {
         onDrop(event, props?.elements, props?.setElements, props?.copiedNodes, props?.setCopiedNodes);
+        // console.log(props?.elements, "==> elements")
 
     }
 
@@ -191,8 +192,9 @@ function Base(props) {
 
     const saveForm = async () => {
         console.log("Save Form")
+        console.log(props?.elements)
         const data = []
-        props?.elements?.formData?.map((el) => {
+        props?.elements?.nodes?.map((el) => {
             const setData = {
                 type: el?.type,
                 position: el?.position,
@@ -205,6 +207,7 @@ function Base(props) {
             }
             data.push(setData)
         })
+
         try {
             await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "properties": JSON.stringify(data) }, {
                 header: {
