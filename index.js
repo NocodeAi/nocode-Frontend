@@ -1,25 +1,19 @@
 const express = require('express')
 const cors = require("cors")
-const db = require("./server/Database_connection/db")
 const ldap = require('ldapjs');
 
 
-db.connect((e) => {
-  if (e) {
-    throw e
-  }
-  console.log('MY SQL DB CONNECTED !')
-})
+// 
 const app = express()
 app.use(express.json())
 app.use(cors())
 
 app.use('/', require('./server/Routes/routes'))
 
+const port = 8080 
 
-
-app.listen('4000', () => {
-  console.log("SERVER IS RUNNING ==>")
+app.listen(port, () => {
+  console.log("SERVER IS RUNNING ON PORT ",port)
 })
 
 function authenticateDN(username, password) {
@@ -34,4 +28,4 @@ function authenticateDN(username, password) {
   });
 }
 
-authenticateDN('uid=admin,ou=system','secret');
+// authenticateDN('uid=admin,ou=system','secret');

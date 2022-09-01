@@ -1,32 +1,62 @@
-const db = require("../Database_connection/db")
-
+const { nocodeAi } = require('../Database_connection/db')
+const { runQuery, apiResponse } = require('nocodeAi-helpers')
+const { v4: uuidv4 } = require('uuid')
 
 const add_form = async (req, res) => {
-
-    let data = {
-        form_name: "zeeshan",
-        form_description: "Mern_Stack_Developer",
+    try {
         
-    }
-    let sql = 'INSERT INTO forms SET ?'
+        const {  name,properties,id } = req?.body
+        console.log(properties,'properties')
+        let project_id = uuidv4()
+        let sql_validation = `select * from forms where project_id='${project_id}' and name='${name}' and is_deleted is not true`
+        let sql
+        let validation = await runQuery(nocodeAi, sql_validation)
+        if (validation.length) {
+             sql = `update forms set properties=${properties},name='${name}' where id='${id}'`
 
-    db.query(sql, data, (error, result) => {
-        if (error) {
-            console.log(error, "error")
-            res.status(500).json({
-                success: false,
-                message: 'Error found',
-                error: error,
-            })
         }
+        else {
+            let id = uuidv4()
+             sql = `INSERT INTO forms( id, project_id, name, description, properties, is_deleted, created_at, updated_at) VALUES ('${id}', '${project_id}', '${name}', '', '${JSON.stringify(properties)}',false, NOW(), NOW())`
+        }
+        // let sql = 'INSERT INTO forms SET ?'
+        let result = await runQuery(nocodeAi, sql)
         console.log(result)
-        res.status(201).json({
+        let obj = {
             success: true,
-            message: 'User Successfully Added in Database',
-            data: result
-        })
-    })
+            message: 'form is inserted successfully'
+        }
+        apiResponse(res, 200, obj)
+    }
+    catch (e) {
+        let obj = {
+            success: false,
+            error: e
+        }
+        apiResponse(res, 500, obj)
+    }
+}
 
+const create_form = async (req, res) => {
+
+    console.log(req?.body)
+    let sql = 'INSERT INTO forms SET ?'
+    let result = await runQuery(nocodeAi, 'select * from forms')
+    console.log(result)
+    //     db?.query(sql, data, (error, result) => {
+
+    //     console.log(result)
+    //     res.status(201).json({
+    //         success: true,
+    //         message: 'User Successfully Added in Database',
+    //         data: result
+    //     })
+    // })
+    let obj = {
+        success: true,
+        message: 'form is inserted successfully'
+    }
+    apiResponse(res, 200, obj)
 }
 
 // const get_all_users = (req, res) => {
