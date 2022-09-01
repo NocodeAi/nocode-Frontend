@@ -1,177 +1,77 @@
-const db = require("../Database_connection/db")
-
+const { nocodeAi } = require('../Database_connection/db')
+const { runQuery, apiResponse } = require('nocodeAi-helpers')
+const { v4: uuidv4 } = require('uuid')
 
 const add_form = async (req, res) => {
+    try {
 
-    let data = {
-        form_name: "zeeshan",
-        form_description: "Mern_Stack_Developer",
-        // user_email: "zeshan@gmail.com",
-        // user_pw: "123456789"
-    }
-    let sql = 'INSERT INTO forms SET ?'
+        const { name, properties, id } = req?.body
+        console.log(properties, 'properties')
+        let project_id = uuidv4()
+        let sql_validation = `select * from forms where project_id='${project_id}' and name='${name}' and is_deleted is not true`
+        let sql
+        let validation = await runQuery(nocodeAi, sql_validation)
+        if (validation.length) {
+            sql = `update forms set properties=${properties},name='${name}' where id='${id}'`
 
-    db.query(sql, data, (error, result) => {
-        if (error) {
-            console.log(error, "error")
-            res.status(500).json({
-                success: false,
-                message: 'Error found',
-                error: error,
-            })
         }
+        else {
+            let id = uuidv4()
+            sql = `INSERT INTO forms( id, project_id, name, description, properties, is_deleted, created_at, updated_at) VALUES ('${id}', '${project_id}', '${name}', '', '${JSON.stringify(properties)}',false, NOW(), NOW())`
+        }
+        // let sql = 'INSERT INTO forms SET ?'
+        let result = await runQuery(nocodeAi, sql)
         console.log(result)
-        res.status(201).json({
+        let obj = {
             success: true,
-            message: 'User Successfully Added in Database',
-            data: result
-        })
-    })
-
-}
-
-const get_all_users = (req, res) => {
-
-    let sql = `SELECT * FROM  users`
-
-    db.query(sql, (error, results) => {
-        if (error) {
-            console.log(error, "error")
-            res.status(500).json({
-                success: false,
-                message: 'Internal Server Error',
-                error: error,
-            })
+            message: 'form is inserted successfully'
         }
-        console.log(results)
-        res.status(200).json({
-            success: true,
-            message: 'Successfully found All Users',
-            data: results
-        })
-    })
-
-}
-
-const delete_user = (req, res) => {
-    const id = req.params.id
-    let sql = `DELETE FROM users  WHERE user_id=${id}`
-
-    db.query(sql, (error, results) => {
-        if (error) {
-            console.log(error, "error")
-            res.status(500).json({
-                success: false,
-                message: 'Error found',
-                error: error,
-            })
+        apiResponse(res, 201, obj)
+    }
+    catch (e) {
+        let obj = {
+            success: false,
+            error: e
         }
-        console.log(results)
-        res.status(200).json({
-            success: true,
-            message: 'ONE DATA DELETED FROM TABLE USERS',
-            data: results
-        })
-
-    })
-
+        apiResponse(res, 500, obj)
+    }
 }
-
-const get_user = (req, res) => {
-    const id = req.params.id
-    let sql = `SELECT * FROM  users  WHERE user_id=${id}`
-
-    db.query(sql, (error, results) => {
-        if (error) {
-            console.log(error, "error")
-            res.status(500).json({
-                success: false,
-                message: 'Error found',
-                error: error,
-            })
+const getAllForms = async (req, res) => {
+    try {
+        const { project_id } = req?.body
+        let sql = `select * from forms where project_id='${project_id}'`
+        let result = await runQuery(nocodeAi,sql)
+        let obj = {
+            success: false,
+            forms: result
         }
-        console.log(results)
-        res.status(200).json({
-            success: true,
-            message: 'ONE DATA FACHED FROM TABLE USERS',
-            data: results
-        })
+        apiResponse(res, 200, obj)
+    }
+    catch (e) {
 
-
-    })
-
+    }
 }
-
-const update_user = (req, res) => {
-    const id = req.params.id
-    let new_title = "full_stack_developer";
-    let sql = `UPDATE  users SET user_title= '${new_title}' WHERE user_id=${id}`
-
-    db.query(sql, (error, results) => {
-        if (error) {
-            console.log(error, "error")
-            res.status(500).json({
-                success: false,
-                message: 'Error found',
-                error: error,
-            })
+const getForm = async (req, res) => {
+    try {
+        const { formId } = req?.body
+        let sql = `select * from forms where id='${formId}'`
+        let result = await runQuery(nocodeAi,sql)
+        let obj = {
+            success: false,
+            forms: result
         }
-        console.log(results)
-        res.status(200).json({
-            success: true,
-            message: 'ONE DATA UPDATED FROM TABLE USERS',
-            data: results
-        })
-    })
+        apiResponse(res, 200, obj)
+    }
+    catch (e) {
 
+    }
 }
+
+
 
 
 module.exports = {
     add_form,
-    // get_all_users,
-    // delete_user,
-    // get_user,
-    // update_user
+    getAllForms,
+    getForm
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ********* Create New Table*************
-// let sql = "CREATE TABLE dbConnection( _id int AUTO_INCREMENT,conn_string VARCHAR(255),pw VARCHAR(255),created_at VARCHAR(255),updated_at VARCHAR(255),is_deleted VARCHAR(255),PRIMARY KEY (_id))"
-// db.query(sql, (error, result) => {
-//     if (error) {
-//         console.log(error, "error")
-//         res.status(500).json({
-//             success: false,
-//             message: 'Server Error',
-//             error: error,
-//         })
-//     }
-//     console.log(result)
-//     res.status(201).json({
-//         success: true,
-//         message: 'table craeted sucess',
-//         data: result
-//     })
-// })
-// ****************************************

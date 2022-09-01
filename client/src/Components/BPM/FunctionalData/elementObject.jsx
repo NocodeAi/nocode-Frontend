@@ -8,6 +8,7 @@ import {
     ItSystem,
     DataBlock,
     ProcessBlock,
+    ProcessNode,
     OutsideOrganization,
     InputText,
     HTML,
@@ -273,7 +274,7 @@ const handleElements = (
 
     }
     const processBlock = {
-        component:ProcessBlock,
+        component:ProcessNode,
         type: getType,
         selected: false,
         position,
@@ -312,7 +313,7 @@ const handleElements = (
         inbox,
         faxMachine,
         outsideOrganization,
-        processBlock,
+        processNode:processBlock,
         dataBlock,
         itSystem,
         worker,

@@ -181,6 +181,7 @@ const onDragOver = (event) => {
 // Drops element on base component
 const onDrop = (event, elements, setElements) => {
     const type = event?.dataTransfer?.getData("field");
+    console.log(type,"type")
     const position = { x: event?.clientX - 300, y: event?.clientY - 145 }
     const data = elements?.nodes;
     let getData = {};
