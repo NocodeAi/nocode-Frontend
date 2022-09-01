@@ -10,6 +10,11 @@ import {
     handleUpdateNode,
     handleMultipleSelectDrag
 } from '../FunctionalData';
+import MagnifyBase from "./MagnifyBase";
+import {
+    SAVE_FORM
+} from '../../../Utils/apis'
+import axios from 'axios'
 
 function Base(props) {
     let data = props?.elements;
@@ -27,7 +32,10 @@ function Base(props) {
     const [scrollX, setScrollX] = useState(0);
     const [scrollY, setScrollY] = useState(0);
     const [baseWidth, setBaseWidth] = useState(1200);
+    const [baseZoom, setBaseZoom] = useState(100);
+    const [successSaved, setSuccessSaved] = useState(false)
     const selectableItems = useRef([]);
+
     const base = useRef();
 
     useEffect(() => {
@@ -44,7 +52,7 @@ function Base(props) {
         });
         // props?.handleMultipleSelectDrag(indexesToSelect);
         setSelectedIds(indexesToSelect);
-        console.log(indexesToSelect,"intersection")
+        console.log(indexesToSelect, "intersection")
     }
     const componentDidMount = () => {
 
@@ -53,14 +61,13 @@ function Base(props) {
             Array.from(document.getElementById('formBase').children[1].children).forEach((item, index) => {
                 const { left, top, width, height } = item.getBoundingClientRect();
                 // const topUpdated = top +110;
-               
+
                 selectableItems.current.push({
                     left,
                     top: top + 110,
                     width,
                     height
-                }); 
-                console.log (selectableItems.current);
+                });
             });
         }
     };
@@ -110,11 +117,19 @@ function Base(props) {
         opacity: 0.5
     }
 
+    const topButtons = { 
+        backgroundColor: "#027ef8", 
+        color: "#fff", 
+        padding: "4px", 
+        margin: "0px 2px", 
+        cursor: "pointer" 
+    }
+
     const containerStyle = {
         position: "relative",
         height: "100vh",
         width: `${baseWidth}px`,
-        zoom:'100%',
+        zoom: `${baseZoom}%`,
     };
 
     const handleClick = (event) => {
@@ -150,9 +165,9 @@ function Base(props) {
         setScrolling(true);
         setClientX(e.clientX);
         setClientY(e.clientY);
-        console.log(window.innerHeight,"height")
-        console.log(window.innerWidth,"width")
-        
+        console.log(window.innerHeight, "height")
+        console.log(window.innerWidth, "width")
+
     }
 
     const onMouseUp = (e) => {
@@ -167,6 +182,45 @@ function Base(props) {
         setScrolling(false);
     }
 
+    const resetForm = async () => {
+        console.log("Reset Form")
+        const formData = await axios.get("")
+        props?.setElements({formName: formData.data.name, formData: formData.data.properties })
+
+    }
+
+    const saveForm = async () => {
+        console.log("Save Form")
+        const data = []
+        props?.elements?.formData?.map((el) => {
+            const setData = {
+                type: el?.type,
+                position: el?.position,
+                className: el?.className,
+                id: el?.id,
+                placeholder: el?.placeholder,
+                name: el?.name,
+                inputTypes: el?.inputTypes,
+                options: el?.options
+            }
+            data.push(setData)
+        })
+        try {
+            await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "properties": JSON.stringify(data) }, {
+                header: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (res) {
+                console.log(res)
+                setSuccessSaved(true)
+            });
+        }
+        catch (e) {
+            setSuccessSaved(false)
+            console.error(e)
+        }
+    }
+
     const onMouseMove = (e) => {
         if (key == "Control") {
             let x = e.clientX;
@@ -179,10 +233,6 @@ function Base(props) {
         if (isScrolling == true) {
             base.current.scrollLeft = scrollX - e.movementX;
             base.current.scrollTop = scrollY - e.movementY;
-            console.log(e.movementX,'movementX');
-            console.log(e.movementY,'movementY');
-            console.log(base.current.scrollLeft,'scrol left');
-            console.log(base.current.scrollTop,'scrol top');
             setScrollX(base.current.scrollLeft);
             setScrollY(base.current.scrollTop);
             setClientX(e.clientX);
@@ -204,7 +254,11 @@ function Base(props) {
 
     return (
         <div className="container-base">
-            <FormName style={{ padding: "8px 22px", marginBottom: "6px", fontSize: "20px", textAlign: "center", fontWeight: "bold" }} name={data?.formName} setElements={props?.setElements} />
+            <div style={{ display: "flex", justifyContent: "right", padding: "3px 0px", fontSize: "14px" }}>
+                <div onClick={resetForm} style={topButtons}>Reset</div>
+                <div onClick={saveForm} style={topButtons}>Save</div>
+            </div>
+            <FormName style={{ border: "1px solid #d3d3d3", borderBottom: "0px", padding: "8px 22px", fontSize: "20px", textAlign: "center", fontWeight: "bold" }} name={data?.formName} setElements={props?.setElements} />
             <div
                 onKeyDown={handleKeyDown}
                 onKeyUp={(e) => { setKey(""); setCursor("grab"); }}
@@ -220,7 +274,6 @@ function Base(props) {
                 onClick={deselectNodes}
                 ref={base}
                 tabIndex="0">
-
 
                 <div style={draw ? square : { display: "none" }}></div>
 
@@ -248,6 +301,9 @@ function Base(props) {
                     })}
                 </DraggableContainer>
             </div>
+            <MagnifyBase 
+                baseZoom={baseZoom}
+                setBaseZoom={setBaseZoom} />
         </div>
     );
 }

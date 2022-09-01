@@ -68,7 +68,7 @@ const nav = [
     },
     {
         id: 11,
-        label: "Automation",
+        label: "Hyper Automation",
         url: "/hyper_automation",
         active: false
     }
