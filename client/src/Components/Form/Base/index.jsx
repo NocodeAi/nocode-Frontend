@@ -11,6 +11,10 @@ import {
     handleMultipleSelectDrag
 } from '../FunctionalData';
 import MagnifyBase from "./MagnifyBase";
+import {
+    SAVE_FORM
+} from '../../../Utils/apis'
+import axios from 'axios'
 
 function Base(props) {
     let data = props?.elements;
@@ -29,7 +33,9 @@ function Base(props) {
     const [scrollY, setScrollY] = useState(0);
     const [baseWidth, setBaseWidth] = useState(1200);
     const [baseZoom, setBaseZoom] = useState(100);
+    const [successSaved, setSuccessSaved] = useState(false)
     const selectableItems = useRef([]);
+
     const base = useRef();
 
     useEffect(() => {
@@ -111,6 +117,14 @@ function Base(props) {
         opacity: 0.5
     }
 
+    const topButtons = { 
+        backgroundColor: "#027ef8", 
+        color: "#fff", 
+        padding: "4px", 
+        margin: "0px 2px", 
+        cursor: "pointer" 
+    }
+
     const containerStyle = {
         position: "relative",
         height: "100vh",
@@ -168,6 +182,45 @@ function Base(props) {
         setScrolling(false);
     }
 
+    const resetForm = async () => {
+        console.log("Reset Form")
+        const formData = await axios.get("")
+        props?.setElements({formName: formData.data.name, formData: formData.data.properties })
+
+    }
+
+    const saveForm = async () => {
+        console.log("Save Form")
+        const data = []
+        props?.elements?.formData?.map((el) => {
+            const setData = {
+                type: el?.type,
+                position: el?.position,
+                className: el?.className,
+                id: el?.id,
+                placeholder: el?.placeholder,
+                name: el?.name,
+                inputTypes: el?.inputTypes,
+                options: el?.options
+            }
+            data.push(setData)
+        })
+        try {
+            await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "properties": JSON.stringify(data) }, {
+                header: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (res) {
+                console.log(res)
+                setSuccessSaved(true)
+            });
+        }
+        catch (e) {
+            setSuccessSaved(false)
+            console.error(e)
+        }
+    }
+
     const onMouseMove = (e) => {
         if (key == "Control") {
             let x = e.clientX;
@@ -201,7 +254,11 @@ function Base(props) {
 
     return (
         <div className="container-base">
-            <FormName style={{ padding: "8px 22px", marginBottom: "6px", fontSize: "20px", textAlign: "center", fontWeight: "bold" }} name={data?.formName} setElements={props?.setElements} />
+            <div style={{ display: "flex", justifyContent: "right", padding: "3px 0px", fontSize: "14px" }}>
+                <div onClick={resetForm} style={topButtons}>Reset</div>
+                <div onClick={saveForm} style={topButtons}>Save</div>
+            </div>
+            <FormName style={{ border: "1px solid #d3d3d3", borderBottom: "0px", padding: "8px 22px", fontSize: "20px", textAlign: "center", fontWeight: "bold" }} name={data?.formName} setElements={props?.setElements} />
             <div
                 onKeyDown={handleKeyDown}
                 onKeyUp={(e) => { setKey(""); setCursor("grab"); }}
