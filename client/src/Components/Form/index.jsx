@@ -4,32 +4,27 @@ import Base from "./Base";
 import Sidebar from "./Sidebar";
 import Properties from "./Properties";
 
-const initialElements = {
-  formName: "Form Name",
-  nodes: []
-}
-
-export default function FormBuilder() {
-  const [elements, setElements] = useState(initialElements);
+export default function FormBuilder(props) {
   const [nodeProperty, setNodeProperty] = useState();
   const [propertyVisible, setPropertyVisible] = useState(false);
   const [copiedNodes, setCopiedNodes] = useState([]);
   const [splitElements, setSplitElements] = useState([]);
 
+
   return (
     <div className="formbuilder">
       <Sidebar />
       <Base
-        elements={elements}
+        elements={props?.elements}
         setNodeProperty={setNodeProperty}
         setPropertyVisible={setPropertyVisible}
-        setElements={setElements}
+        setElements={props?.setElements}
         copiedNodes={copiedNodes}
         setCopiedNodes={setCopiedNodes}
       />
       <Properties
-        elements={elements}
-        setElements={setElements}
+        elements={props?.elements}
+        setElements={props?.setElements}
         setNodeProperty={setNodeProperty}
         nodeDetail={nodeProperty}
         visible={propertyVisible} />

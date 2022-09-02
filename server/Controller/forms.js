@@ -17,7 +17,7 @@ const add_form = async (req, res) => {
         }
         else {
             let id = uuidv4()
-            sql = `INSERT INTO forms( id, project_id, name, description, properties, is_deleted, created_at, updated_at) VALUES ('${id}', '${project_id}', '${name}', '', '${JSON.stringify(properties)}',false, NOW(), NOW())`
+            sql = `INSERT INTO forms( id, project_id, name, description, properties, is_deleted, created_at, updated_at) VALUES ('${id}', '${project_id}', '${name}', '', '${properties}',false, NOW(), NOW())`
         }
         // let sql = 'INSERT INTO forms SET ?'
         let result = await runQuery(nocodeAi, sql)
@@ -39,7 +39,8 @@ const add_form = async (req, res) => {
 const getAllForms = async (req, res) => {
     try {
         const { project_id } = req?.body
-        let sql = `select * from forms where project_id='${project_id}'`
+        // let sql = `select * from forms where project_id='${project_id}'`
+        let sql = `select * from forms`
         let result = await runQuery(nocodeAi,sql)
         let obj = {
             success: false,
@@ -53,7 +54,7 @@ const getAllForms = async (req, res) => {
 }
 const getForm = async (req, res) => {
     try {
-        const { formId } = req?.body
+        const { formId } = req?.query
         let sql = `select * from forms where id='${formId}'`
         let result = await runQuery(nocodeAi,sql)
         let obj = {

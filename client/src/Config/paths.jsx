@@ -30,60 +30,72 @@ const paths = [
     },
     {
         id: 4,
-        name: "Form",
-        path: "/form",
-        component: screens.Form
+        name: "Form Builder",
+        path: "/form_builder",
+        component: screens.CreateForm
     },
     {
         id: 5,
+        name: "All Forms",
+        path: "/all_forms",
+        component: screens.FormsList
+    },
+    {
+        id: 6,
+        name: "Edit Form",
+        path: "/edit_form",
+        component: screens.EditForm
+    },
+    {
+        id: 7,
         name: "LDAP",
         path: "/ldap",
         component: App
     },
     {
-        id: 6,
+        id: 8,
         name: "DevOps",
         path: "/devops",
         component: App
     },
     {
-        id: 7,
+        id: 9,
         name: "Integrations",
         path: "/integrations",
         component: App
     },
     {
-        id: 8,
+        id: 10,
         name: "IoT",
         path: "/iot",
         component: App
     },
     {
-        id: 9,
+        id: 11,
         name: "Database",
         path: "/database",
         component: DATABASE_component
     },
     {
-        id: 10,
+        id: 12,
         name: "Dashboard",
         path: "/reports-dashboard",
         component: App
     },
     {
-        id: 11,
+        id: 13,
         name: "Hyper Automation",
         path: "/hyper_automation",
         component: App
     },
     {
-        id: 11,
+        id: 14,
         name: "Neo4j",
         path: "/neo4j",
         component: screens.Neo4J
     },
     {
-        id: 12,
+        id: 15,
         name: "Login",
         path: "/login",
         component: screens.Login

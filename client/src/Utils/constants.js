@@ -78,7 +78,8 @@ import {
     FaGripLines,
     FaLink,
     FaLaptop,
-    FaFax
+    FaFax,
+    FaTrash
 } from 'react-icons/fa';
 
 import {
@@ -104,7 +105,8 @@ import {
     BsHexagon,
     BsKanban,
     BsStackOverflow,
-    BsEyeglasses
+    BsEyeglasses,
+    BsGearFill
 } from 'react-icons/bs';
 
 import {
@@ -173,6 +175,7 @@ const constants = {
     FaHeading,
     FaDatabase,
     FaGripLines,
+    FaTrash,
     BsArrowsExpand,
     BsTextareaT,
     BsCodeSlash,
@@ -180,6 +183,7 @@ const constants = {
     BsFileArrowDownFill,
     BsBoxArrowUpRight,
     BsCalendarDate,
+    BsGearFill,
     BiRadioCircleMarked,
     BiRectangle,
     AiOutlineEdit,

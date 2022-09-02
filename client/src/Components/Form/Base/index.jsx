@@ -202,6 +202,7 @@ function Base(props) {
                 id: el?.id,
                 placeholder: el?.placeholder,
                 name: el?.name,
+                label: el?.label,
                 inputTypes: el?.inputTypes,
                 options: el?.options
             }

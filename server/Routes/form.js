@@ -9,7 +9,7 @@ const { add_form ,getAllForms,getForm} = require('../Controller/forms')
 
 router.post('/add_form', add_form)
 router.get('/get_all_forms', getAllForms)
-router.get('/get_all_forms', getForm)
+router.get('/get_form', getForm)
 
 
 
