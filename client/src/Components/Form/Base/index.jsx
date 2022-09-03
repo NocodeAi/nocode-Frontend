@@ -1,3 +1,4 @@
+import CircularProgress from '@mui/material/CircularProgress';
 import { DraggableContainer, DraggableChild } from "react-dragline";
 import './style.css'
 import { useState, useEffect, useRef } from 'react';
@@ -33,7 +34,9 @@ function Base(props) {
     const [scrollY, setScrollY] = useState(0);
     const [baseWidth, setBaseWidth] = useState(1200);
     const [baseZoom, setBaseZoom] = useState(100);
-    const [successSaved, setSuccessSaved] = useState(false)
+    const [saved, setSaved] = useState(false)
+    const [saveResetText, setSaveResetText] = useState("")
+    const [reset, setReset] = useState(false)
     const selectableItems = useRef([]);
 
     const base = useRef();
@@ -118,7 +121,8 @@ function Base(props) {
         opacity: 0.5
     }
 
-    const topButtons = { 
+    const topButtons = {
+        display: "flex", 
         backgroundColor: "#027ef8", 
         color: "#fff", 
         padding: "4px", 
@@ -185,27 +189,21 @@ function Base(props) {
 
     const resetForm = async () => {
         console.log("Reset Form")
-        const formData = await axios.get("")
-        props?.setElements({formName: formData.data.name, formData: formData.data.properties })
+        setReset(true)
+        setSaveResetText("")
+        props?.setElements({formName: "Form Name", nodes: [] })
+        setReset(false)
+        setSaveResetText("Form reset successfully!")
 
     }
 
     const saveForm = async () => {
         console.log("Save Form")
-        console.log(props?.elements)
+        setSaved(true)
+        setSaveResetText("")
         const data = []
         props?.elements?.nodes?.map((el) => {
-            const setData = {
-                type: el?.type,
-                position: el?.position,
-                className: el?.className,
-                id: el?.id,
-                placeholder: el?.placeholder,
-                name: el?.name,
-                label: el?.label,
-                inputTypes: el?.inputTypes,
-                options: el?.options
-            }
+            const setData = el
             data.push(setData)
         })
 
@@ -215,12 +213,15 @@ function Base(props) {
                     'Content-Type': 'application/json'
                 }
             }).then(function (res) {
-                console.log(res)
-                setSuccessSaved(true)
+                setSaved(false)
+                if (res?.data) {
+                    setSaveResetText(res?.data?.message)
+                }
             });
         }
         catch (e) {
-            setSuccessSaved(false)
+            setSaved(false)
+            setSaveResetText("Something went wrong!")
             console.error(e)
         }
     }
@@ -258,9 +259,14 @@ function Base(props) {
 
     return (
         <div className="container-base">
-            <div style={{ display: "flex", justifyContent: "right", padding: "3px 0px", fontSize: "14px" }}>
-                <div onClick={resetForm} style={topButtons}>Reset</div>
-                <div onClick={saveForm} style={topButtons}>Save</div>
+            <div style={{ display: "flex", padding: "3px 0px", fontSize: "14px" }}>
+                <div style={{ textAlign: "center", width: "100%" }}>
+                    <label style={{color: "#027ef8", fontWeight: "bold"}}>{saveResetText}</label>
+                </div>
+                <div style={{ display: "flex", justifyContent: "right" }}>
+                    <div onClick={resetForm} style={topButtons}>Reset {reset ? <CircularProgress style={{color: "#fff", padding: "2px", width: "20px", height: "20px"}} /> : ""}</div>
+                    <div onClick={saveForm} style={topButtons}>Save {saved ? <CircularProgress style={{color: "#fff", padding: "2px", width: "20px", height: "20px"}} /> : ""}</div>
+                </div>
             </div>
             <FormName style={{ border: "1px solid #d3d3d3", borderBottom: "0px", padding: "8px 22px", fontSize: "20px", textAlign: "center", fontWeight: "bold" }} name={data?.formName} setElements={props?.setElements} />
             <div
