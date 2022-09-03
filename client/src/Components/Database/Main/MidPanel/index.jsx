@@ -101,6 +101,20 @@ const MidPanel = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <div >
+        {/* <h5>Try typing these words</h5> */}
+        {/* <code>{`[${hintData.toString()}]`}</code> */}
+        <p >Query Result</p>
+        {/* <Hint options={hintData} allowTabFill>
+
+          <input
+            className="input-with-hint"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+        </Hint> */}
+        <p >fakher /n asd</p>
+      </div>
     </>
   );
 };

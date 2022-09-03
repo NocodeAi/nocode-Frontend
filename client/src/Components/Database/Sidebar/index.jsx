@@ -13,6 +13,7 @@ export default () => {
   let Icon = constants.MdKeyboardArrowDown;
 
   const handleClick = (event) => {
+    console.log('on click')
     event.preventDefault();
     let id = event.target.id;
     if (id) {
