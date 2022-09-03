@@ -4,14 +4,9 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import { constants } from '../../../../../Utils/constants';
 import TextField from '@mui/material/TextField';
-import { useDispatch } from 'react-redux'
-import { dbConfig } from '../../../../../Redux/actions/dbAction'
-import axios from 'axios'
-import {
-    AUTHENTICATE_DB
-} from '../../../../../Utils/apis'
 const Fade = forwardRef(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
     return (
@@ -41,50 +36,15 @@ const style = {
 };
 
 
-const PostgresqlModal = () => {
-    const dispatch = useDispatch()
+const DBModal = () => {
     const [open, setOpen] = useState(false);
-    const [host, setHost] = useState();
-    const [database, setDatabase] = useState();
-    const [port, setPort] = useState();
-    const [msg, setMsg] = useState();
-
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const onConnect = async () => {
-        const config = {
-            username,
-            password,
-            database,
-            host,
-            dialect: 'postgres',
-            port
-        }
-        console.log('button clicked', host, port, username, password)
-        await axios.post(`${AUTHENTICATE_DB}`,
-            config, {
-            header: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (data) {
-            console.log(data, '<==data')
-            if (data?.data?.success) {
-                setMsg('database is cennected successfully')
-                dispatch(dbConfig(config))
 
-            }
-            else {
-                setMsg('unable to connect to database!')
-            }
-        });
-
-    }
     return (
         <>
             <div>
-                <Button onClick={handleOpen} className='zoom'> <constants.SiPostgresql className='sidebar-icons' /></Button>
+                <Button onClick={handleOpen}> <constants.DiDatabase className='sidebar-icons' />DB</Button>
                 <Modal
                     aria-labelledby="spring-modal-title"
                     aria-describedby="spring-modal-description"
@@ -102,34 +62,22 @@ const PostgresqlModal = () => {
                                 type="localhost"
                                 id="outlined-host"
                                 label="Host"
-                                onChange={(e) => setHost(e.target.value)}
-                                defaultValue=""
+                                defaultValue="localhost"
                                 style={{ width: '100%', marginBottom: '10px' }}
 
                             />
-                            <TextField
-                                type="database"
-                                id="outlined-host"
-                                label="Database"
-                                onChange={(e) => setDatabase(e.target.value)}
-                                defaultValue=""
-                                style={{ width: '100%', marginBottom: '10px' }}
-
-                            />
-                            <TextField
+                              <TextField
                                 type="5432"
                                 id="outlined-port"
                                 label="Port"
-                                onChange={(e) => setPort(e.target.value)}
-                                defaultValue=""
+                                defaultValue="5432"
                                 style={{ width: '100%', marginBottom: '10px' }}
 
                             />
-                            <TextField
+                                <TextField
                                 type="postgres"
                                 id="outlined-port"
                                 label="Username"
-                                onChange={(e) => setUsername(e.target.value)}
                                 defaultValue=""
                                 style={{ width: '100%', marginBottom: '10px' }}
 
@@ -139,14 +87,12 @@ const PostgresqlModal = () => {
                                 id="outlined-password-input"
                                 label="Password"
                                 type="password"
-                                onChange={(e) => setPassword(e.target.value)}
                                 autoComplete="current-password"
                                 style={{ width: '100%', marginBottom: '10px' }}
 
                             />
-
                             <div>
-                                <Button variant="outlined" onClick={onConnect} size="small" style={{ marginRight: '10px' }}
+                                <Button variant="outlined" size="small" style={{ marginRight: '10px' }}
                                 >
                                     Connect
                                 </Button>
@@ -154,7 +100,6 @@ const PostgresqlModal = () => {
                                     Cancel
                                 </Button>
                             </div>
-                            <p>{msg ? msg : 'press connect to make connection with database'}</p>
                         </Box>
                     </Fade>
                 </Modal>
@@ -164,4 +109,4 @@ const PostgresqlModal = () => {
 }
 
 
-export default PostgresqlModal
+export default DBModal
