@@ -17,7 +17,7 @@ export default function InputText(props) {
                 <span>Name:</span>
                 <input value={name} onChange={(e) => {setName(e.target.value); singleDataChange(e.target.value, props?.data?.id, "label", props?.elements, props?.setElements);}} type="text" />
                 <span>Type:</span>
-                <select value={inputType} onChange={(e) => {setInputType(e.target.value); singleDataChange(e.target.value, props?.data?.id, "activeInputType", props?.elements, props?.setElements);}}>
+                <select value={inputType} onChange={(e) => {setInputType(e.target.value); singleDataChange(e.target.value.toLowerCase(), props?.data?.id, "selectedType", props?.elements, props?.setElements);}}>
                     {props?.data?.inputTypes.map((it) => {
                         return <option key={it?.id} value={it?.type.toLowerCase()}>{it?.type}</option>
                     })}

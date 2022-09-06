@@ -22,7 +22,7 @@ function InputText(props) {
                     marginTop: "4px"
                 }}
             >
-                <TextField size="small" fullWidth label={data?.label} />
+                <TextField type={data?.selectedType} size="small" fullWidth label={data?.label} />
             </Box>
         </div>
     );

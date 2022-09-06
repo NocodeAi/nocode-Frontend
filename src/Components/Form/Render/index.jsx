@@ -12,7 +12,7 @@ function RenderBase(props) {
         border: '1px solid #dedede',
         borderRadius: '1px',
         backgroundColor: '#f9f9f9',
-        width: '980px',
+        width: '100%',
         minHeight: "80vh",
         height: "80vh",
         outline: 'none',
@@ -28,8 +28,8 @@ function RenderBase(props) {
     const componentDidMount = () => {
 
         selectableItems.current = [];
-        if (document.getElementById('formRender').children) {
-            Array.from(document.getElementById('formRender').children).forEach((item, index) => {
+        if (document.getElementById('formRender')) {
+            Array.from(document.getElementById('formRender')).forEach((item, index) => {
                 const { left, top, width, height } = item.getBoundingClientRect();
                 // const topUpdated = top +110;
 
@@ -44,23 +44,26 @@ function RenderBase(props) {
     };
 
     return (
-        <div className="container-base">
-            <div style={style} className="base-scrollable-container" id="formRender">
-                <div style={containerStyle}>
-                    {data?.nodes?.map(element => {
-                        if (element.type) {
-                            return (
-                                    <div key={element?.id}>
-                                        {<element.component 
-                                        data={element}
-                                        componentDidMount={componentDidMount} />}
-                                    </div>
-                            )
+        <div className="container-render">
+            {data?.nodes?.map(element => {
+                if (element.type) {
+                    return (
+                        <div style={
+                            {
+                                position: "absolute", 
+                                top: element?.position?.y, 
+                                left: element?.position?.x,
+                                width: element?.width,
+                                height: element?.height
+                            }} key={element?.id}>
+                            {<element.component
+                                data={element}
+                                componentDidMount={componentDidMount} />}
+                        </div>
+                    )
 
-                        }
-                    })}
-                </div>
-            </div>
+                }
+            })}
         </div>
     );
 }

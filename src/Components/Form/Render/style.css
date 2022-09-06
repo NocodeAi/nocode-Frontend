@@ -1,9 +1,8 @@
-.container-base {
-    display: block;
+.container-render {
+    display: absolute;
     padding: 6px;
     background-color: transparent;
-    width: 75%;
-    z-index: 1;
+    width: 100%;
 }
 /* 
 .base-scrollable-container {
