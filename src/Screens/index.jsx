@@ -7,6 +7,7 @@ import Neo4J from './Neo4j';
 import Login from './Login'
 import EditForm from './Form/EditForm'
 import FormMain from './Form/Main'
+import ViewForm from './Form/ViewForm'
 
 export const screens = {
     BPM,
@@ -14,6 +15,7 @@ export const screens = {
     FormMain,
     CreateForm,
     EditForm,
+    ViewForm,
     WorkFlow,
     Database,
     Neo4J,

@@ -47,7 +47,7 @@ export default (props) => {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                <Link to={'/view_form'} state={{form_id: row?.id}}>{row.name}</Link>
                             </TableCell>
                             <TableCell align="right">{row.created_at}</TableCell>
                             <TableCell align="right">{row.updated_at}</TableCell>

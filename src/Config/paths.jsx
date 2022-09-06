@@ -54,54 +54,60 @@ const paths = [
     },
     {
         id: 8,
+        name: "View Form",
+        path: "/view_form",
+        component: screens.ViewForm
+    },
+    {
+        id: 9,
         name: "LDAP",
         path: "/ldap",
         component: App
     },
     {
-        id: 9,
+        id: 10,
         name: "DevOps",
         path: "/devops",
         component: App
     },
     {
-        id: 10,
+        id: 11,
         name: "Integrations",
         path: "/integrations",
         component: App
     },
     {
-        id: 11,
+        id: 12,
         name: "IoT",
         path: "/iot",
         component: App
     },
     {
-        id: 12,
+        id: 13,
         name: "Database",
         path: "/database",
         component: DATABASE_component
     },
     {
-        id: 13,
+        id: 14,
         name: "Dashboard",
         path: "/reports-dashboard",
         component: App
     },
     {
-        id: 14,
+        id: 15,
         name: "Hyper Automation",
         path: "/hyper_automation",
         component: App
     },
     {
-        id: 15,
+        id: 16,
         name: "Neo4j",
         path: "/neo4j",
         component: screens.Neo4J
     },
     {
-        id: 16,
+        id: 17,
         name: "Login",
         path: "/login",
         component: screens.Login
