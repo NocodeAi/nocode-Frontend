@@ -12,17 +12,26 @@ import {
     GET_ALL_FORMS
 } from '../../../Utils/apis'
 import { Link } from 'react-router-dom';
+import AlertDialogSlide from '../Dialog/alert';
 
 export default (props) => {
 
     const [rows, setRows] = useState([])
+    const [open, setOpen] = useState(false);
+    const [id, setId] = useState("")
+    const [name, setName] = useState("")
+
+    const handleDialogOpen = (e, id, name) => {
+        console.log(name, "form_id")
+        setId(id)
+        setName(name)
+        setOpen(true)
+    }
 
     const getData = async () => {
         let result = await axios.get(`${GET_ALL_FORMS}?project_id=7fb1c7ea-4e3c-4159-a10f-8962fe59ace1`,)
         console.log(result.data.forms, "==> result")
         setRows(result.data.forms)
-
-        console.log(rows, "==> rows")
     }
 
     useEffect(() => {
@@ -30,6 +39,8 @@ export default (props) => {
     }, [])
 
     return (
+        <>
+        <AlertDialogSlide open={open} data={{id: id, name: name}} setOpen={setOpen} />
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -53,12 +64,13 @@ export default (props) => {
                             <TableCell align="right">{row.updated_at}</TableCell>
                             <TableCell align="right">
                                 <Link to={'/edit_form'} state={{form_id: row?.id}}><constants.BsGearFill style={{color: "#027ef8", marginRight: "2px", cursor: "pointer"}} /></Link>
-                                <constants.FaTrash style={{color: "#e00404", marginLeft: "2px", cursor: "pointer"}} />
+                                <constants.FaTrash onClick={(e) => handleDialogOpen(e, row?.id, row?.name)} style={{color: "#e00404", marginLeft: "2px", cursor: "pointer"}} />
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
+        </>
     );
 }

@@ -6,45 +6,46 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import { DELETE_FORM } from '../../../Utils/apis';
+import axios from 'axios';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide() {
-  const [open, setOpen] = React.useState(false);
+export default function AlertDialogSlide(props) {
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+    const handleClose = () => {
+        props?.setOpen(false);
+    };
 
-  return (
-    <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button>
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle>{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            Do you want to delete this form?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>No</Button>
-          <Button onClick={handleClose}>Yes</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
+    const deleteData = async () => {
+        let result = await axios.post(`${DELETE_FORM}`, {formId: props?.data?.id})
+        console.log(result, "==> result")
+        props?.setOpen(false);
+    }
+
+    return (
+        <div>
+            <Dialog
+                open={props?.open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                aria-describedby="alert-dialog-slide-description"
+            >
+                <DialogTitle>{`Delete ${props?.data && props?.data?.name}`}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        Do you want to delete {props?.data && props?.data?.name}?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>No</Button>
+                    <Button onClick={deleteData}>Yes</Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
 }
