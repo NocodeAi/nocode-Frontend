@@ -1,27 +1,27 @@
 import InputText from './InputText';
+import Dropdown from './Dropdown'
 // import FormName from './FormName';
 // import SplitContainer from './SplitContainer';
 // import Container from './Container';
-// import Label from './Label';
+import Label from './Label';
 // import Checkbox from './Checkbox'
 // import RadioButton from './RadioButton';
 // import Button from './Button';
 // import Spacer from './Spacer';
-// import Dropdown from './Dropdown';
-// import TextArea from './TextArea';
+import TextArea from './TextArea';
 // import UploadImage from './Image';
-// import HTML from './HTML';
+import HTML from './HTML';
 // import Link from './Link';
 // import Tabs from './Tabs';
 // import Breadcrumbs from './Breadcrumbs';
-// import Switch from './Switch';
+import Switch from './Switch';
 // import Accordion from './Accordion';
 // import Alert from './Alert';
-// import RTF from './RichTextEditor';
+import RTF from './RichTextEditor';
 // import Modal from './Modal';
 // import Swimlane from './Swimlane';
 // import DatePicker from './DatePicker';
-// import TimePicker from './TimePicker';
+import TimePicker from './TimePicker';
 // import Rating from './Rating';
 // import TransferList from './TransferList';
 // import ToggleButton from './ToggleButton';
@@ -31,30 +31,30 @@ import InputText from './InputText';
 // import ImageList from './ImageList';
 
 export {
-    InputText
+    InputText,
+    Dropdown,
     // FormName,
     // SplitContainer,
     // Container,
-    // Label,
+    Label,
     // Checkbox,
     // RadioButton,
     // Button,
     // Spacer,
-    // Dropdown,
-    // TextArea,
+    TextArea,
     // UploadImage,
-    // HTML,
+    HTML,
     // Link,
     // Tabs,
     // Breadcrumbs,
-    // Switch,
+    Switch,
     // Accordion,
     // Alert,
-    // RTF,
+    RTF,
     // Modal,
     // Swimlane,
     // DatePicker,
-    // TimePicker,
+    TimePicker,
     // Rating,
     // TransferList,
     // ToggleButton,
