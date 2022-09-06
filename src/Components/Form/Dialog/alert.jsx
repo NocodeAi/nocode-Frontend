@@ -21,8 +21,8 @@ export default function AlertDialogSlide(props) {
     };
 
     const deleteData = async () => {
-        let result = await axios.post(`${DELETE_FORM}`, {formId: props?.data?.id})
-        console.log(result, "==> result")
+        let result = await axios.post(`${DELETE_FORM}`, {formId: props?.data?.id, projectId: "7fb1c7ea-4e3c-4159-a10f-8962fe59ace1"})
+        props?.setRows(result?.data?.data)
         props?.setOpen(false);
     }
 
