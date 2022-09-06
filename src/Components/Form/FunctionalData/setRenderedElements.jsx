@@ -1,27 +1,27 @@
 import {
-    InputText
+    InputText,
     // SplitContainer,
     // Container,
-    // Label,
+    Label,
     // Checkbox,
     // RadioButton,
     // Button,
     // Spacer,
-    // Dropdown,
-    // TextArea,
+    Dropdown,
+    TextArea,
     // UploadImage,
-    // HTML,
+    HTML,
     // Link,
     // Tabs,
     // Breadcrumbs,
-    // Switch,
+    Switch,
     // Accordion,
     // Alert,
-    // RTF,
+    RTF,
     // Modal,
     // Swimlane,
     // DatePicker,
-    // TimePicker,
+    TimePicker,
     // Rating,
     // TransferList,
     // ToggleButton,
@@ -42,20 +42,20 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const timePicker = {
-    //     component: TimePicker,
-    //     ...node
-    // }
+    const timePicker = {
+        component: TimePicker,
+        ...node
+    }
 
     // const rating = {
     //     component: Rating,
     //     ...node
     // }
 
-    // const label = {
-    //     component: Label,
-    //     ...node
-    // }
+    const label = {
+        component: Label,
+        ...node
+    }
 
     // const link = {
     //     component: Link,
@@ -67,20 +67,20 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const rtf = {
-    //     component: RTF,
-    //     ...node
-    // }
+    const rtf = {
+        component: RTF,
+        ...node
+    }
 
     // const breadcrumbs = {
     //     component: Breadcrumbs,
     //     ...node
     // }
 
-    // const switchProp = {
-    //     component: Switch,
-    //     ...node
-    // }
+    const switchProp = {
+        component: Switch,
+        ...node
+    }
 
     // const accordion = {
     //     component: Accordion,
@@ -92,10 +92,10 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const dropdown = {
-    //     component: Dropdown,
-    //     ...node
-    // }
+    const dropdown = {
+        component: Dropdown,
+        ...node
+    }
 
     // const button = {
     //     component: Button,
@@ -162,11 +162,11 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const textArea = {
-    //     component: TextArea,
-    //     ...node
+    const textArea = {
+        component: TextArea,
+        ...node
 
-    // }
+    }
 
     // const uploadImage = {
     //     component: UploadImage,
@@ -178,27 +178,27 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const html = {
-    //     component: HTML,
-    //     ...node
+    const html = {
+        component: HTML,
+        ...node
 
-    // }
+    }
 
 
     const Components = {
-        inputfield: inputField
+        inputfield: inputField,
         // datepicker: datePicker,
-        // timepicker: timePicker,
+        timepicker: timePicker,
         // rating,
-        // label,
+        label,
         // link,
         // tabs,
-        // rtf,
+        rtf,
         // breadcrumbs,
-        // switch: switchProp,
+        switch: switchProp,
         // accordion,
         // alert,
-        // dropdown,
+        dropdown,
         // button,
         // modal,
         // spacer,
@@ -212,10 +212,10 @@ const handleElements = (getType, node) => {
         // splitcontainer: splitContainer,
         // container,
         // swimlane,
-        // textarea: textArea,
+        textarea: textArea,
         // image: uploadImage,
         // imagelist: imageList,
-        // html,
+        html,
     }
 
     return Components[getType]
