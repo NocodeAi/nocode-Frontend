@@ -48,14 +48,14 @@
 
 
 /* Properties Style */
-.properties {
+.db-properties {
     display: block;
     border-left: 1px solid rgb(179, 179, 179);
     width: 320px;
     overflow: auto;
 }
 
-.properties-header {
+.db-properties-header {
     font-size: 18px;
     font-weight: bold;
     padding-top: 8px;
@@ -64,18 +64,18 @@
     text-align: center;
 }
 
-.properties-components {
+.db-properties-components {
     text-align: left;
     padding: 10px;
 }
 
-.properties-components span {
+.db-properties-components span {
     font-size: 14px;
     width: 100%;
     display: block;
 }
 
-.properties-components input {
+.db-properties-components input {
     font-size: 14px;
     width: 100%;
     border-radius: 4px;
@@ -84,7 +84,7 @@
     margin-bottom: 8px;
 }
 
-.properties-components select {
+.db-properties-components select {
     font-size: 14px;
     width: 100%;
     padding: 5px;

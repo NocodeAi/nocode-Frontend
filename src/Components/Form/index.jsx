@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./formStyle.css";
 import Base from "./Base";
 import Sidebar from "./Sidebar";
 import Properties from "./Properties";

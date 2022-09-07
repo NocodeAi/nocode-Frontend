@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../style.css";
+import "../dbStyles.css";
 import Base from "../Base";
 import Sidebar from "../Sidebar";
 import Properties from "../properties";

@@ -105,9 +105,9 @@ export default (props) => {
 
     if (nd?.type == 'select') {
         return (
-            <div className='properties'>
-                <span className='properties-header'>Properties</span>
-                <div visibility={visibility.toString()} className='properties-components'>
+            <div className='db-properties'>
+                <span className='db-properties-header'>Properties</span>
+                <div visibility={visibility.toString()} className='db-properties-components'>
                     <h3 style={{ textAlign: "center" }}>Input Field</h3>
                     <span>Name:</span>
                     <input value={inputFieldLabel} onChange={handleName} type="text" />
@@ -123,9 +123,9 @@ export default (props) => {
     }
     if (nd?.type == 'update') {
         return (
-            <div className='properties'>
-                <span className='properties-header'>Properties</span>
-                <div visibility={visibility.toString()} className='properties-components'>
+            <div className='db-properties'>
+                <span className='db-properties-header'>Properties</span>
+                <div visibility={visibility.toString()} className='db-properties-components'>
                     <h3 style={{ textAlign: "center" }}>Input Field</h3>
                     <span>Name:</span>
                     <input value={inputFieldLabel} onChange={handleName} type="text" />
@@ -142,8 +142,8 @@ export default (props) => {
 
     else {
         return (
-            <div className='properties'>
-                <span className='properties-header'>Properties</span>
+            <div className='db-properties'>
+                <span className='db-properties-header'>Properties</span>
             </div>
         );
     }

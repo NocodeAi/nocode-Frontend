@@ -55,7 +55,6 @@ function Base(props) {
         });
         // props?.handleMultipleSelectDrag(indexesToSelect);
         setSelectedIds(indexesToSelect);
-        console.log(indexesToSelect, "intersection")
     }
     const componentDidMount = () => {
 
@@ -102,7 +101,7 @@ function Base(props) {
         border: '1px solid #dedede',
         borderRadius: '1px',
         backgroundColor: '#f9f9f9',
-        width: '980px',
+        width: '750px',
         minHeight: "80vh",
         height: "80vh",
         outline: 'none',
@@ -170,8 +169,6 @@ function Base(props) {
         setScrolling(true);
         setClientX(e.clientX);
         setClientY(e.clientY);
-        console.log(window.innerHeight, "height")
-        console.log(window.innerWidth, "width")
 
     }
 
@@ -180,7 +177,6 @@ function Base(props) {
             setDraw(false);
             // console.log(e.clientX, e.clientY);
             const box = { left: startPos.x, top: startPos.y + 100, width: rec.width, height: rec.height }
-            console.log("selection Complete", box);
             onSelectionChange(box);
         }
         componentDidMount();
@@ -188,7 +184,6 @@ function Base(props) {
     }
 
     const resetForm = async () => {
-        console.log("Reset Form")
         setReset(true)
         setSaveResetText("")
         props?.setElements({formName: "Form Name", nodes: [] })
@@ -198,7 +193,6 @@ function Base(props) {
     }
 
     const saveForm = async () => {
-        console.log("Save Form")
         setSaved(true)
         setSaveResetText("")
         const data = []
@@ -246,14 +240,6 @@ function Base(props) {
         }
         else {
             setDraw(false)
-            // console.log(x, y, "position");
-            // let x = e.clientX - 260;
-            // let y = e.clientY - 120; 
-            // if (x >= 750) {
-            //     console.log("moving");
-            //     // let w = baseWidth;
-            //     // setBaseWidth(w+=10)
-            // }
         }
     }
 
@@ -280,7 +266,6 @@ function Base(props) {
                 style={style}
                 className="base-scrollable-container"
                 id="formBase"
-                // onClick={props?.handleDeselectNodes}
                 onClick={deselectNodes}
                 ref={base}
                 tabIndex="0">
@@ -301,7 +286,6 @@ function Base(props) {
                                             copiedNodes={props?.copiedNodes}
                                             setCopiedNodes={props?.setCopiedNodes}
                                             componentDidMount={componentDidMount}
-                                            // componentDidUpdate={componentDidUpdate}
                                             data={element} />}
                                     </div>
                                 </DraggableChild>
