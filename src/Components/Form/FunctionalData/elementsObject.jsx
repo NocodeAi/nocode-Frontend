@@ -360,7 +360,8 @@ const handleElements = (getType, position, getId, dataProperties, dataDelete) =>
         delete: dataDelete,
         id: getId,
         label: "Default",
-        name: "Default"
+        name: "Default",
+        charLength: "200"
 
     }
 

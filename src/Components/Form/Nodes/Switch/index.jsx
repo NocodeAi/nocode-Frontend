@@ -113,7 +113,8 @@ function SwitchNode(props) {
             handleComponent={handleComponent}
             resizeRatio={1}
         >
-            <div>
+            <div style={{display: "flex", alignItems: "center"}}>
+                <label>{data?.label}</label>
                 <Switch {...label} defaultChecked />
             </div>
         </Resizable>
