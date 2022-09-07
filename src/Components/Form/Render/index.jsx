@@ -7,24 +7,6 @@ function RenderBase(props) {
 
     const selectableItems = useRef([]);
 
-    const style = {
-        color: '#333',
-        border: '1px solid #dedede',
-        borderRadius: '1px',
-        backgroundColor: '#f9f9f9',
-        width: '100%',
-        minHeight: "80vh",
-        height: "80vh",
-        outline: 'none',
-        overflow: 'hidden'
-    }
-
-    const containerStyle = {
-        position: "relative",
-        height: "100vh",
-        width: "100%"
-    };
-
     const componentDidMount = () => {
 
         selectableItems.current = [];
@@ -44,26 +26,33 @@ function RenderBase(props) {
     };
 
     return (
-        <div className="container-render">
-            {data?.nodes?.map(element => {
-                if (element.type) {
-                    return (
-                        <div style={
-                            {
-                                position: "absolute", 
-                                top: element?.position?.y, 
-                                left: element?.position?.x,
-                                width: element?.width,
-                                height: element?.height
-                            }} key={element?.id}>
-                            {<element.component
-                                data={element}
-                                componentDidMount={componentDidMount} />}
-                        </div>
-                    )
+        <div style={{ alignItems: "center", paddingLeft: "20%", paddingRight: "20%", minHeight: "50vh", height: "85vh" }}>
+            <div style={{textAlign: "center", padding: "12px", backgroundColor: "#027ef8", color: "#ffffff"}}>
+                <label style={{fontSize: "22px", fontWeight: "bold"}}>{data?.formName}</label>
+            </div>
+            <div style={{display: "block", overflow: "auto", border: "1px solid #a1a1a1"}}>
+                <div className="container-render">
+                    {data?.nodes?.map(element => {
+                        if (element.type) {
+                            return (
+                                <div style={
+                                    {
+                                        position: "relative",
+                                        top: element?.position?.y,
+                                        left: element?.position?.x,
+                                        width: element?.width,
+                                        height: element?.height
+                                    }} key={element?.id}>
+                                    {<element.component
+                                        data={element}
+                                        componentDidMount={componentDidMount} />}
+                                </div>
+                            )
 
-                }
-            })}
+                        }
+                    })}
+                </div>
+            </div>
         </div>
     );
 }
