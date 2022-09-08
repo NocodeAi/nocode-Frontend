@@ -12,7 +12,7 @@ import {
     GET_ALL_FORMS
 } from '../../../Utils/apis'
 import { Link } from 'react-router-dom';
-import AlertDialogSlide from '../Dialog/alert';
+import AlertDialogSlide from '../../Dialogs/alert';
 
 export default (props) => {
 

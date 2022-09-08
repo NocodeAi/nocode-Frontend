@@ -1,9 +1,9 @@
-import Card from './card'
+import { ViewMoreCard } from '../../../Components/Cards'
 import Header from '../../../Components/Header'
 
 export default () => {
 
-    const cards = [
+    const formCards = [
         {
             id: 1,
             label: "Form Builder",
@@ -19,9 +19,9 @@ export default () => {
     return (
         <>
             <Header />
-            <div style={{display: "flex", padding: "8px"}}>
-                {cards.map((c) => {
-                    return <Card key={c?.id} label={c?.label} link={c?.link} style={{margin: "2px"}} />
+            <div style={{display: "flex", padding: "16px"}}>
+                {formCards.map((c) => {
+                    return <ViewMoreCard key={c?.id} label={c?.label} link={c?.link} style={{margin: "4px"}} />
                 })}
             </div>
         </>

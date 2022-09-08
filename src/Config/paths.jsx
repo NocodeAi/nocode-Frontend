@@ -1,14 +1,12 @@
 import { screens } from '../Screens';
 import App from '../App';
 
-const BPM_components = screens.BPM
-const DATABASE_component = screens.Database
 const paths = [
     {
         id: 0,
-        name: "App",
+        name: "Home",
         path: "/",
-        component: App
+        component: screens.Home
     },
     {
         id: 1,
@@ -20,7 +18,7 @@ const paths = [
         id: 2,
         name: "BPM",
         path: "/usecase_bpm",
-        component: BPM_components
+        component: screens.BPM
     },
     {
         id: 3,
@@ -86,7 +84,7 @@ const paths = [
         id: 13,
         name: "Database",
         path: "/database",
-        component: DATABASE_component
+        component: screens.Database
     },
     {
         id: 14,

@@ -8,6 +8,8 @@ import Login from './Login'
 import EditForm from './Form/EditForm'
 import FormMain from './Form/Main'
 import ViewForm from './Form/ViewForm'
+import Project from './Project'
+import Home from './Home'
 
 export const screens = {
     BPM,
@@ -19,5 +21,7 @@ export const screens = {
     WorkFlow,
     Database,
     Neo4J,
-    Login
+    Login,
+    Project,
+    Home
 }

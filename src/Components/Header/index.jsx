@@ -41,7 +41,7 @@ function Header(props) {
             <div className='container-head'>
                 <div style={{ width: "10px" }}></div>
                 <div className="logo-container">
-                    <img className="logo" src={constants?.logo} />
+                    <Link to="/"><img className="logo" src={constants?.logo} /></Link>
                 </div>
                 {/* <div style={{ width: "60px" }}></div> */}
                 <div className='navbar'>
