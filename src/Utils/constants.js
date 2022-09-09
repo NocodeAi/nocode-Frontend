@@ -21,10 +21,13 @@ import {
     AiOutlineWarning,
     AiOutlineRedo,
     AiOutlineZoomIn,
-    AiOutlineZoomOut
+    AiOutlineZoomOut,
+    AiOutlineProject, 
+    AiOutlineFundProjectionScreen,
+    AiOutlineForm,
+    AiOutlineRobot
 } from 'react-icons/ai';
 import axios from 'axios';
-
 
 import {
     TiStarburstOutline
@@ -33,7 +36,9 @@ import {
 import {
     RiStackOverflowLine,
     RiOrganizationChart,
-    RiNotificationBadgeLine
+    RiNotificationBadgeLine,
+    RiFlowChart,
+    RiDashboardLine
 } from 'react-icons/ri';
 
 import {
@@ -43,7 +48,8 @@ import {
     SiMicrosoftazure,
     SiPostgresql,
     SiMongodb,
-    SiOracle
+    SiOracle,
+    SiNeo4J
 } from 'react-icons/si';
 
 import {
@@ -57,7 +63,9 @@ import {
     MdKeyboardArrowDown,
     MdKeyboardArrowUp,
     MdSettingsSuggest,
-    MdOutlineWorkOutline
+    MdOutlineWorkOutline,
+    MdOutlineIntegrationInstructions,
+    MdOutlineDeviceHub
 } from 'react-icons/md'
 
 import {
@@ -80,7 +88,8 @@ import {
     FaLaptop,
     FaFax,
     FaTrash,
-    FaEdit
+    FaEdit,
+    FaProjectDiagram
 } from 'react-icons/fa';
 
 import {
@@ -107,7 +116,8 @@ import {
     BsKanban,
     BsStackOverflow,
     BsEyeglasses,
-    BsGearFill
+    BsGearFill,
+    BsBoundingBox
 } from 'react-icons/bs';
 
 import {
@@ -167,6 +177,10 @@ const constants = {
     AiOutlineDelete,
     AiOutlineSetting,
     AiOutlineUpload,
+    AiOutlineProject, 
+    AiOutlineFundProjectionScreen,
+    AiOutlineForm,
+    AiOutlineRobot,
     AiFillStar,
     FaFont,
     FaRegSquare,
@@ -189,6 +203,8 @@ const constants = {
     BiRadioCircleMarked,
     BiRectangle,
     AiOutlineEdit,
+    MdOutlineIntegrationInstructions,
+    MdOutlineDeviceHub,
     AiOutlineCheckCircle,
     AiOutlineSplitCells,
     CgShapeCircle,
@@ -231,6 +247,7 @@ const constants = {
     BsDiamond,
     BiCircle,
     BiTimeFive,
+    BsBoundingBox,
     RiOrganizationChart,
     RiNotificationBadgeLine,
     BsSquareHalf,
@@ -249,6 +266,9 @@ const constants = {
     SiPostgresql,
     SiMongodb,
     SiOracle,
+    SiNeo4J,
+    RiFlowChart,
+    RiDashboardLine,
     GrMysql,
     MdOutlineWorkOutline,
     AiOutlinePhone,
@@ -262,7 +282,8 @@ const constants = {
     AiOutlineRedo,
     BsEyeglasses,
     AiOutlineZoomIn,
-    AiOutlineZoomOut
+    AiOutlineZoomOut,
+    FaProjectDiagram
 }
 
 export { constants }

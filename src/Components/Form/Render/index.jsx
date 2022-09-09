@@ -33,7 +33,7 @@ function RenderBase(props) {
             <div style={{display: "block", overflow: "auto", border: "1px solid #a1a1a1"}}>
                 <div className="container-render">
                     {data?.nodes?.map(element => {
-                        if (element.type) {
+                        if (element?.type) {
                             return (
                                 <div style={
                                     {

@@ -30,7 +30,7 @@ export default (props) => {
             </div>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", padding: "16px" }}>
                 {rows?.map((c) => {
-                    return <ServiceCard key={c?.id} label={c?.label} link={c?.url} style={{ margin: "4px" }} />
+                    return <ServiceCard key={c?.id} label={c?.label} link={c?.url} Icon={c?.icon} style={{ margin: "6px" }} />
                 })}
             </div>
         </div>

@@ -11,7 +11,7 @@ export default (props) => {
                     {props?.label}
                 </label>
 
-                <label style={{padding: "4px", backgroundColor: "#027ef8", color: "#ffffff", marginTop: "4px", borderRadius: "6px", cursor: "pointer"}}>
+                <label style={{padding: "8px", backgroundColor: "#027ef8", color: "#ffffff", marginTop: "4px", borderRadius: "6px", cursor: "pointer"}}>
                     <Link state={{project: props?.label}} style={{color: "#ffffff"}} to={props?.link}>View More</Link>
                 </label>
             </div>
