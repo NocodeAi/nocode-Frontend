@@ -16,7 +16,12 @@ function DatePicker(props) {
         props?.componentDidMount();
     }, []);
 
+    const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
 
+    const handleChange = (newValue) => {
+        setValue(newValue);
+    };
+    
     return (
         <div 
             className="inputtext"

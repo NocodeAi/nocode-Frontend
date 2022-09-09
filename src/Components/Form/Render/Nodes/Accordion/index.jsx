@@ -4,7 +4,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import { constants } from '../../../../Utils/constants'
+import { constants } from '../../../../../Utils/constants'
 
 function AccordionNode(props) {
     let data = props?.data;

@@ -22,13 +22,13 @@ import {
     Swimlane,
     DatePicker,
     TimePicker,
-    // Rating,
-    // TransferList,
-    // ToggleButton,
+    Rating,
+    TransferList,
+    ToggleButton,
     Avatar,
     Badge,
-    // Progress,
-    // ImageList
+    Progress,
+    ImageList
 } from '../Render/Nodes'
 
 const handleElements = (getType, node) => {
@@ -52,10 +52,10 @@ const handleElements = (getType, node) => {
         ...node
     }
 
-    // const rating = {
-    //     component: Rating,
-    //     ...node
-    // }
+    const rating = {
+        component: Rating,
+        ...node
+    }
 
     const label = {
         component: Label,
@@ -122,15 +122,15 @@ const handleElements = (getType, node) => {
         ...node
     }
 
-    // const transferList = {
-    //     component: TransferList,
-    //     ...node
-    // }
+    const transferList = {
+        component: TransferList,
+        ...node
+    }
 
-    // const toggleButton = {
-    //     component: ToggleButton,
-    //     ...node
-    // }
+    const toggleButton = {
+        component: ToggleButton,
+        ...node
+    }
 
     const avatar = {
         component: Avatar,
@@ -142,10 +142,10 @@ const handleElements = (getType, node) => {
         ...node
     }
 
-    // const progress = {
-    //     component: Progress,
-    //     ...node
-    // }
+    const progress = {
+        component: Progress,
+        ...node
+    }
 
     const radioButton = {
         component: RadioButton,
@@ -178,10 +178,10 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const imageList = {
-    //     component: ImageList,
-    //     ...node
-    // }
+    const imageList = {
+        component: ImageList,
+        ...node
+    }
 
     const html = {
         component: HTML,
@@ -195,7 +195,7 @@ const handleElements = (getType, node) => {
         datepicker: datePicker,
         timepicker: timePicker,
         card,
-        // rating,
+        rating,
         label,
         link,
         tabs,
@@ -209,18 +209,18 @@ const handleElements = (getType, node) => {
         modal,
         spacer,
         checkbox,
-        // togglebutton: toggleButton,
-        // transferlist: transferList,
+        togglebutton: toggleButton,
+        transferlist: transferList,
         avatar,
         badge,
-        // progress,
+        progress,
         radiobutton: radioButton,
         // splitcontainer: splitContainer,
         container,
         swimlane,
         textarea: textArea,
         // image: uploadImage,
-        // imagelist: imageList,
+        imagelist: imageList,
         html,
     }
 

@@ -23,13 +23,13 @@ import Swimlane from './Swimlane';
 import DatePicker from './DatePicker';
 import TimePicker from './TimePicker';
 import Card from './Card'
-// import Rating from './Rating';
-// import TransferList from './TransferList';
-// import ToggleButton from './ToggleButton';
+import Rating from './Rating';
+import TransferList from './TransferList';
+import ToggleButton from './ToggleButton';
 import Avatar from './Avatar';
 import Badge from './Badge';
-// import Progress from './Progress';
-// import ImageList from './ImageList';
+import Progress from './Progress';
+import ImageList from './ImageList';
 
 export {
     InputText,
@@ -57,11 +57,11 @@ export {
     Swimlane,
     DatePicker,
     TimePicker,
-    // Rating,
-    // TransferList,
-    // ToggleButton,
+    Rating,
+    TransferList,
+    ToggleButton,
     Avatar,
     Badge,
-    // Progress,
-    // ImageList
+    Progress,
+    ImageList
 }
