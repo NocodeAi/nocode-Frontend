@@ -1,32 +1,32 @@
 import {
     InputText,
     // SplitContainer,
-    // Container,
+    Container,
     Label,
-    // Checkbox,
-    // RadioButton,
-    // Button,
-    // Spacer,
+    Checkbox,
+    RadioButton,
+    Button,
+    Card,
+    Spacer,
     Dropdown,
     TextArea,
-    // UploadImage,
     HTML,
-    // Link,
-    // Tabs,
-    // Breadcrumbs,
+    Link,
+    Tabs,
+    Breadcrumbs,
     Switch,
-    // Accordion,
-    // Alert,
+    Accordion,
+    Alert,
     RTF,
-    // Modal,
-    // Swimlane,
-    // DatePicker,
+    Modal,
+    Swimlane,
+    DatePicker,
     TimePicker,
     // Rating,
     // TransferList,
     // ToggleButton,
-    // Avatar,
-    // Badge,
+    Avatar,
+    Badge,
     // Progress,
     // ImageList
 } from '../Render/Nodes'
@@ -37,10 +37,15 @@ const handleElements = (getType, node) => {
         ...node
     }
 
-    // const datePicker = {
-    //     component: DatePicker,
-    //     ...node
-    // }
+    const datePicker = {
+        component: DatePicker,
+        ...node
+    }
+
+    const card = {
+        component: Card,
+        ...node
+    }
 
     const timePicker = {
         component: TimePicker,
@@ -57,65 +62,65 @@ const handleElements = (getType, node) => {
         ...node
     }
 
-    // const link = {
-    //     component: Link,
-    //     ...node
-    // }
+    const link = {
+        component: Link,
+        ...node
+    }
 
-    // const tabs = {
-    //     component: Tabs,
-    //     ...node
-    // }
+    const tabs = {
+        component: Tabs,
+        ...node
+    }
 
     const rtf = {
         component: RTF,
         ...node
     }
 
-    // const breadcrumbs = {
-    //     component: Breadcrumbs,
-    //     ...node
-    // }
+    const breadcrumbs = {
+        component: Breadcrumbs,
+        ...node
+    }
 
     const switchProp = {
         component: Switch,
         ...node
     }
 
-    // const accordion = {
-    //     component: Accordion,
-    //     ...node
-    // }
+    const accordion = {
+        component: Accordion,
+        ...node
+    }
 
-    // const alert = {
-    //     component: Alert,
-    //     ...node
-    // }
+    const alert = {
+        component: Alert,
+        ...node
+    }
 
     const dropdown = {
         component: Dropdown,
         ...node
     }
 
-    // const button = {
-    //     component: Button,
-    //     ...node
-    // }
+    const button = {
+        component: Button,
+        ...node
+    }
 
-    // const modal = {
-    //     component: Modal,
-    //     ...node
-    // }
+    const modal = {
+        component: Modal,
+        ...node
+    }
 
-    // const spacer = {
-    //     component: Spacer,
-    //     ...node
-    // }
+    const spacer = {
+        component: Spacer,
+        ...node
+    }
 
-    // const checkbox = {
-    //     component: Checkbox,
-    //     ...node
-    // }
+    const checkbox = {
+        component: Checkbox,
+        ...node
+    }
 
     // const transferList = {
     //     component: TransferList,
@@ -127,40 +132,40 @@ const handleElements = (getType, node) => {
     //     ...node
     // }
 
-    // const avatar = {
-    //     component: Avatar,
-    //     ...node
-    // }
+    const avatar = {
+        component: Avatar,
+        ...node
+    }
 
-    // const badge = {
-    //     component: Badge,
-    //     ...node
-    // }
+    const badge = {
+        component: Badge,
+        ...node
+    }
 
     // const progress = {
     //     component: Progress,
     //     ...node
     // }
 
-    // const radioButton = {
-    //     component: RadioButton,
-    //     ...node
-    // }
+    const radioButton = {
+        component: RadioButton,
+        ...node
+    }
 
     // const splitContainer = {
     //     component: SplitContainer,
     //     ...node
     // }
 
-    // const container = {
-    //     component: Container,
-    //     ...node
-    // }
+    const container = {
+        component: Container,
+        ...node
+    }
 
-    // const swimlane = {
-    //     component: Swimlane,
-    //     ...node
-    // }
+    const swimlane = {
+        component: Swimlane,
+        ...node
+    }
 
     const textArea = {
         component: TextArea,
@@ -187,31 +192,32 @@ const handleElements = (getType, node) => {
 
     const Components = {
         inputfield: inputField,
-        // datepicker: datePicker,
+        datepicker: datePicker,
         timepicker: timePicker,
+        card,
         // rating,
         label,
-        // link,
-        // tabs,
+        link,
+        tabs,
         rtf,
-        // breadcrumbs,
+        breadcrumbs,
         switch: switchProp,
-        // accordion,
-        // alert,
+        accordion,
+        alert,
         dropdown,
-        // button,
-        // modal,
-        // spacer,
-        // checkbox,
+        button,
+        modal,
+        spacer,
+        checkbox,
         // togglebutton: toggleButton,
         // transferlist: transferList,
-        // avatar,
-        // badge,
+        avatar,
+        badge,
         // progress,
-        // radiobutton: radioButton,
+        radiobutton: radioButton,
         // splitcontainer: splitContainer,
-        // container,
-        // swimlane,
+        container,
+        swimlane,
         textarea: textArea,
         // image: uploadImage,
         // imagelist: imageList,
