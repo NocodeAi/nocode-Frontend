@@ -34,7 +34,8 @@ export default (props) => {
         <div>
             <CreateProjectDialog setRows={setRows} open={createModal} setOpen={setCreateModal} />
             <RemoveProjectDialog setRows={setRows} open={removeModal} data={rows} setOpen={setRemoveModal} />
-            <div style={{ display: "flex", justifyContent: "right", padding: "18px" }}>
+            <div style={{ display: "flex", width: "100%", padding: "18px" }}>
+                <label style={{textAlign: "left", width: "82%"}}>Welcome User!</label>
                 <Button onClick={handleDialogCreateModal} variant="contained">Create new project</Button>
             </div>
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", padding: "16px" }}>
