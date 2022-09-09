@@ -79,7 +79,8 @@ import {
     FaLink,
     FaLaptop,
     FaFax,
-    FaTrash
+    FaTrash,
+    FaEdit
 } from 'react-icons/fa';
 
 import {
@@ -176,6 +177,7 @@ const constants = {
     FaDatabase,
     FaGripLines,
     FaTrash,
+    FaEdit,
     BsArrowsExpand,
     BsTextareaT,
     BsCodeSlash,

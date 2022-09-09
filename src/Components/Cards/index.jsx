@@ -1,5 +1,9 @@
-import ViewMoreCard from './viewMore'
+import ViewMoreCard from './formCards'
+import ProjectCard from './projectCards'
+import ServiceCard from './Services'
 
 export {
-    ViewMoreCard
+    ViewMoreCard,
+    ProjectCard,
+    ServiceCard
 }

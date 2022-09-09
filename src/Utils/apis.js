@@ -2,7 +2,7 @@
 // URL
 const formApi = "http://localhost:8080"
 const dbApi = "http://localhost:8080"
-const projectApi = "http://localhost:8080"
+const projectApi = "http://localhost:8081"
 
 
 // FORM
@@ -19,6 +19,7 @@ let GET_COLUMNS = `${dbApi}/api/database/get_column_list`
 // PROJECT
 let CREATE_PROJECT = `${projectApi}/api/project/add_project`
 let GET_ALL_PROJECTS = `${projectApi}/api/project/get_all_projects`
+let DELETE_PROJECT = `${projectApi}/api/project/delete_project`
 
 module.exports = {
     SAVE_FORM,
@@ -29,5 +30,6 @@ module.exports = {
     EXECUTE_QUERY,
     GET_COLUMNS,
     CREATE_PROJECT,
-    GET_ALL_PROJECTS
+    GET_ALL_PROJECTS,
+    DELETE_PROJECT
 }

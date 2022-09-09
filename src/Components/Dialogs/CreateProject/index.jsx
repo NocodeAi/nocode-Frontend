@@ -67,7 +67,7 @@ export default function CreateProjectDialog(props) {
                         To create the project enter project name and click on save.
                     </DialogContentText>
                     <Box>
-                        <FormControl sx={{ mt: 2, minWidth: 220 }}>
+                        <FormControl sx={{ mt: 2, minWidth: "100%" }}>
                             <TextField id="proj_name" size="small" fullWidth label="Project Name" />
                             <label style={{fontSize: "12px", marginTop: "6px"}}>{saveText}</label>
                         </FormControl>

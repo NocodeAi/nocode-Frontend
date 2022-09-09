@@ -10,9 +10,9 @@ const paths = [
     },
     {
         id: 1,
-        name: "Projects",
-        path: "/projects",
-        component: App
+        name: "Project",
+        path: "/project",
+        component: screens.Project
     },
     {
         id: 2,
