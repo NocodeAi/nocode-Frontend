@@ -21,7 +21,7 @@ export default function RemoveProjectDialog(props) {
     };
 
     const deleteData = async () => {
-        let result = await axios.post(`${DELETE_PROJECT}`, {project_id: props?.data?.id})
+        let result = await axios.post(`${DELETE_PROJECT}`, {project_id: props?.data?.id, user_id: "123"})
         props?.setRows(result?.data?.data)
         props?.setOpen(false);
     }
@@ -35,10 +35,10 @@ export default function RemoveProjectDialog(props) {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle>{`Delete ${props?.data && props?.data?.label}`}</DialogTitle>
+                <DialogTitle>{`Delete ${props?.data && props?.data?.name}`}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Do you want to delete {props?.data && props?.data?.label}?
+                        Do you want to delete {props?.data && props?.data?.name}?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -30,7 +30,7 @@ export default function CreateProjectDialog(props) {
         setSaveText("")
 
         try {
-            await axios.post(`${CREATE_PROJECT}`, { "name": project_name }, {
+            await axios.post(`${CREATE_PROJECT}`, { "name": project_name, "user_id": '123' }, {
                 header: {
                     'Content-Type': 'application/json'
                 }
@@ -46,7 +46,6 @@ export default function CreateProjectDialog(props) {
         catch (e) {
             setSaved(false)
             setSaveText("Something went wrong!")
-            console.error(e)
         }
 
 
