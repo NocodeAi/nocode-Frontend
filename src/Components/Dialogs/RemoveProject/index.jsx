@@ -6,14 +6,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
-import { DELETE_FORM } from '../../../Utils/apis';
+import { DELETE_PROJECT } from '../../../Utils/apis';
 import axios from 'axios';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide(props) {
+export default function RemoveProjectDialog(props) {
 
 
     const handleClose = () => {
@@ -21,7 +21,7 @@ export default function AlertDialogSlide(props) {
     };
 
     const deleteData = async () => {
-        let result = await axios.post(`${DELETE_FORM}`, {formId: props?.data?.id, projectId: "7fb1c7ea-4e3c-4159-a10f-8962fe59ace1"})
+        let result = await axios.post(`${DELETE_PROJECT}`, {project_id: props?.data?.id, user_id: "123"})
         props?.setRows(result?.data?.data)
         props?.setOpen(false);
     }
