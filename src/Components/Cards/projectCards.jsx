@@ -1,8 +1,17 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { constants } from '../../Utils/constants'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectedProject } from '../../Redux/actions/selectedProjectAction'
 
 export default (props) => {
+    // const selected_Project = useSelector((store) => store?.selectedProjectReducer?.selectedProject)
+
+    const dispatch = useDispatch()
+
+    const handleSelectProject = () => {
+        dispatch(selectedProject(props?.project))
+    }
 
     return (
         <div style={props?.style}>
@@ -12,7 +21,7 @@ export default (props) => {
                 </label>
 
                 <label style={{padding: "6px", backgroundColor: "#027ef8", color: "#ffffff", marginTop: "4px", borderRadius: "6px", cursor: "pointer"}}>
-                    <Link state={{project: props?.label}} style={{color: "#ffffff", fontSize: "12px"}} to={props?.link}>View More</Link>
+                    <Link onClick={handleSelectProject} state={{project: props?.label}} style={{color: "#ffffff", fontSize: "12px"}} to={props?.link}>View More</Link>
                 </label>
             </div>
             <div style={{position: "relative", float: "right", bottom: 28, right: 10}}><constants.FaTrash onClick={props?.setOpen} style={{color: "#C70000", height: "18px", width: "18px", cursor: "pointer"}} /></div>

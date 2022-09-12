@@ -16,6 +16,7 @@ import {
     SAVE_FORM
 } from '../../../Utils/apis'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 function Base(props) {
     let data = props?.elements;
@@ -40,6 +41,7 @@ function Base(props) {
     const selectableItems = useRef([]);
 
     const base = useRef();
+    const selectedProject = useSelector((store) => store?.selectedProjectReducer?.selectedProject)
 
     useEffect(() => {
         handleMultipleSelectDrag(selectedIds, props?.elements, props?.setElements);
@@ -202,7 +204,7 @@ function Base(props) {
         })
 
         try {
-            await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "properties": JSON.stringify(data),"project_id":"7fb1c7ea-4e3c-4159-a10f-8962fe59ace1" }, {
+            await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "properties": JSON.stringify(data),"project_id": selectedProject?.id }, {
                 header: {
                     'Content-Type': 'application/json'
                 }

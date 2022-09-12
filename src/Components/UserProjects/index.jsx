@@ -57,7 +57,7 @@ export default (props) => {
                 <div style={{ display: "flex", flexWrap: "wrap", padding: "16px" }}>
                     {loading ? [1, 2, 3, 4, 5, 6].map((el) => { return <Skeleton key={el} variant="rect" style={{ margin: "4px", width: "200px", height: "200px", border: "1px solid transparent", borderRadius: "6px" }} /> }) :
                         rows?.map((c) => {
-                            return <ProjectCard key={c?.id} label={c?.name} link={"/project"} setOpen={(e) => handleDialogRemoveModal(e, c?.id, c?.name)} style={{ margin: "4px" }} />
+                            return <ProjectCard key={c?.id} project={c} label={c?.name} link={"/project"} setOpen={(e) => handleDialogRemoveModal(e, c?.id, c?.name)} style={{ margin: "4px" }} />
                         })
                     }
                 </div>

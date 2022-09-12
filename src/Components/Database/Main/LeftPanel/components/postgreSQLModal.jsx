@@ -41,7 +41,7 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
-
+;
 
 const PostgresqlModal = ({ setSchemaTable }) => {
     const db_config = useSelector((store) => store?.dbReducer?.dbConfig)

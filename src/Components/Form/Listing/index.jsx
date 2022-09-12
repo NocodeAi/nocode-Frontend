@@ -13,8 +13,13 @@ import {
 } from '../../../Utils/apis'
 import { Link } from 'react-router-dom';
 import AlertDialogSlide from '../../Dialogs/alert';
+import { useSelector } from 'react-redux'
 
 export default (props) => {
+
+    const selectedProject = useSelector((store) => store?.selectedProjectReducer?.selectedProject)
+
+    console.log(selectedProject, "==> Listing Selected Project")
 
     const [rows, setRows] = useState([])
     const [open, setOpen] = useState(false);
@@ -28,7 +33,7 @@ export default (props) => {
     }
 
     const getData = async () => {
-        let result = await axios.get(`${GET_ALL_FORMS}?project_id=7fb1c7ea-4e3c-4159-a10f-8962fe59ace1`,)
+        let result = await axios.get(`${GET_ALL_FORMS}?project_id=${selectedProject?.id}`,)
         setRows(result.data.forms)
     }
 
