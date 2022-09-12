@@ -113,7 +113,7 @@ function AlertNode(props) {
         >
             <Rating
                 name="rating"
-                value={value}
+                value={data?.label}
                 onChange={handleChange}
             />
         </Resizable>

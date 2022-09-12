@@ -28,7 +28,8 @@ import {
     Avatar,
     Badge,
     Progress,
-    ImageList
+    ImageList,
+    PersonalGroup
 } from '../Nodes'
 
 const handleElements = (getType, position, getId, dataProperties, dataDelete) => {
@@ -53,6 +54,20 @@ const handleElements = (getType, position, getId, dataProperties, dataDelete) =>
         type: getType,
         selected: false,
         position,
+        properties: dataProperties,
+        delete: dataDelete,
+        id: getId,
+        label: "Default",
+        name: "Default",
+    }
+
+    const personalGroup = {
+        component: PersonalGroup,
+        type: getType,
+        selected: false,
+        position,
+        width: 400,
+        height: 450,
         properties: dataProperties,
         delete: dataDelete,
         id: getId,
@@ -441,6 +456,7 @@ const handleElements = (getType, position, getId, dataProperties, dataDelete) =>
         image: uploadImage,
         imagelist: imageList,
         html,
+        personal:personalGroup
     }
 
     return Components[getType]

@@ -15,9 +15,6 @@ function ButtonNode(props) {
 
     return (
         <div 
-            onClick={handleClick} 
-            onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyUp}
             className="inputtext"
             style={{outline: "none"}}
             tabIndex="0">

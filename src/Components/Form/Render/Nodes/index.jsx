@@ -30,6 +30,8 @@ import Avatar from './Avatar';
 import Badge from './Badge';
 import Progress from './Progress';
 import ImageList from './ImageList';
+import PersonalGroup from './PersonalGroup';
+
 
 export {
     InputText,
@@ -63,5 +65,6 @@ export {
     Avatar,
     Badge,
     Progress,
-    ImageList
+    ImageList,
+    PersonalGroup
 }

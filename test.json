@@ -1,0 +1,15 @@
+[
+    {
+        "type": "personal",
+        "selected": false,
+        "position": {
+            "y": 40.25,
+            "x": 109.5
+        },
+        "width": 536,
+        "height": 413,
+        "id": "node_1",
+        "label": "Default",
+        "name": "Default"
+    }
+]

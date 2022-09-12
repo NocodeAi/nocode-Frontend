@@ -6,7 +6,8 @@ import {
     Surfaces, 
     Navigation, 
     Utils,
-    Form
+    Form,
+    Groups
 } from './Elements';
 import {constants} from '../../../Utils/constants'
 
@@ -34,6 +35,9 @@ let componentData = [
   },
   {
     id: "7", open: false, name: "Utils", Component: Utils, Icon: constants.MdKeyboardArrowDown
+  },
+  {
+    id: "8", open: false, name: "Gruops", Component: Groups, Icon: constants.MdKeyboardArrowDown
   }
 ]
 

@@ -12,13 +12,14 @@ function CheckboxNode(props) {
         props?.componentDidMount();
     }, []);
 
+    const [checked, setChecked] = useState("");
 
+    const handleChange = event => {
+        setChecked(event.target.value);
+    };
 
     return (
         <div
-            onClick={handleClick}
-            onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyUp}
             className="inputtext"
             style={{ outline: "none" }}
             tabIndex="0">

@@ -28,7 +28,8 @@ import {
     Avatar,
     Badge,
     Progress,
-    ImageList
+    ImageList,
+    PersonalGroup
 } from '../Nodes'
 
 import { dataDelete, dataProperties } from './baseFunctions'
@@ -43,6 +44,13 @@ const handleElements = (getType, node) => {
 
     const datePicker = {
         component: DatePicker,
+        properties: dataProperties,
+        delete: dataDelete,
+        ...node
+    }
+
+    const personalGroup = {
+        component: PersonalGroup,
         properties: dataProperties,
         delete: dataDelete,
         ...node
@@ -278,6 +286,7 @@ const handleElements = (getType, node) => {
         image: uploadImage,
         imagelist: imageList,
         html,
+        personal:personalGroup
     }
 
     return Components[getType]

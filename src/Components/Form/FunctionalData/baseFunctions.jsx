@@ -184,9 +184,9 @@ const onDrop = (event, elements, setElements) => {
     const position = { x: event?.clientX - 300, y: event?.clientY - 145 }
     const data = elements?.nodes;
     let getData = {};
-
+    console.log('type drop===>', type)
     type ? getData = handleElements(type, position, getId(), dataProperties, dataDelete) : console.log("Nothing")
-
+    console.log('data drop===>', getData)
     data.push(getData);
     setElements(es => ({
         ...es,

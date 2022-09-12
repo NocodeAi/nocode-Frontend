@@ -28,7 +28,8 @@ import {
     Avatar,
     Badge,
     Progress,
-    ImageList
+    ImageList,
+    PersonalGroup
 } from '../Render/Nodes'
 
 const handleElements = (getType, node) => {
@@ -39,6 +40,11 @@ const handleElements = (getType, node) => {
 
     const datePicker = {
         component: DatePicker,
+        ...node
+    }
+
+    const personalGroup = {
+        component: PersonalGroup,
         ...node
     }
 
@@ -222,6 +228,7 @@ const handleElements = (getType, node) => {
         // image: uploadImage,
         imagelist: imageList,
         html,
+        personal:personalGroup
     }
 
     return Components[getType]

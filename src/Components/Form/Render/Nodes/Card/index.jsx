@@ -13,16 +13,13 @@ function AlertNode(props) {
     
     return (
         <div 
-            onClick={handleClick} 
-            onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyUp}
             className="inputtext"
             style={{outline: "none"}}
             tabIndex="0">
            <Rating
                 name="rating"
-                value={value}
-                onChange={handleChange}
+                value={data?.label}
+                // onChange={handleChange}
             />
         </div>
     );
