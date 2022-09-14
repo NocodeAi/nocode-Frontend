@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import {constants} from '../../../Utils/constants'
 import axios from 'axios';
 import {
-    GET_ALL_FORMS
+    GET_ALL_FORMS, RENDER_FORM
 } from '../../../Utils/apis'
 import { Link } from 'react-router-dom';
 import AlertDialogSlide from '../../Dialogs/alert';
@@ -35,6 +35,7 @@ export default (props) => {
     const getData = async () => {
         let result = await axios.get(`${GET_ALL_FORMS}?project_id=${selectedProject?.id}`,)
         setRows(result.data.forms)
+        console.log(result.data.forms, "==> All Forms")
     }
 
     useEffect(() => {
@@ -61,7 +62,7 @@ export default (props) => {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                <Link to={'/view_form'} state={{form_id: row?.id}}>{row.name}</Link>
+                                <a href={`${RENDER_FORM}?tk=${row.token}`} target="_blank">{row.name}</a>
                             </TableCell>
                             <TableCell align="right">{row?.created_at}</TableCell>
                             <TableCell align="right">{row?.updated_at}</TableCell>

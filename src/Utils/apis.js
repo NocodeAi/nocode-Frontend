@@ -21,6 +21,10 @@ let CREATE_PROJECT = `${projectApi}/api/project/add_project`
 let GET_ALL_PROJECTS = `${projectApi}/api/project/get_all_projects`
 let DELETE_PROJECT = `${projectApi}/api/project/delete_project`
 
+// RENDER FORM URL
+let RENDER_FORM = `http://localhost:3001`
+
+
 module.exports = {
     SAVE_FORM,
     GET_ALL_FORMS,
@@ -31,5 +35,6 @@ module.exports = {
     GET_COLUMNS,
     CREATE_PROJECT,
     GET_ALL_PROJECTS,
-    DELETE_PROJECT
+    DELETE_PROJECT,
+    RENDER_FORM
 }

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { nav } from '../Header/navbarComponents';
 import { ServiceCard } from '../Cards'
-import { useLocation } from 'react-router-dom';
-import { constants } from '../../Utils/constants';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Titlebar from '../Header/Titlebar'
 
 export default (props) => {
 
@@ -10,6 +10,7 @@ export default (props) => {
     const [project, setProject] = useState("")
 
     const location = useLocation()
+    const navigate = useNavigate()
 
     const getData = async () => {
         // let result = await axios.get(`${GET_ALL_PROJECTS}`,)
@@ -24,10 +25,7 @@ export default (props) => {
 
     return (
         <div>
-            <div style={{ display: "flex", justifyContent: "left", padding: "18px", backgroundColor: "#027ef8", color: "#ffffff", fontSize: "16px", fontWeight: "bold", textTransform: "uppercase" }}>
-                <constants.AiOutlineArrowLeft style={{marginLeft: "14px", height: "24px", width: "24px", cursor: "pointer"}} />
-                <label style={{marginLeft: "10px"}}>{location?.state?.project}</label>
-            </div>
+            <Titlebar path={location?.state?.project} />
             <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", padding: "16px" }}>
                 {rows?.map((c) => {
                     return <ServiceCard key={c?.id} label={c?.label} link={c?.url} Icon={c?.icon} style={{ margin: "6px" }} />

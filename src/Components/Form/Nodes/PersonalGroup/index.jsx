@@ -353,4 +353,4 @@ function PersonalGroup(props) {
     );
 }
 
-export default PersonalGroup;
+export default PersonalGroup
