@@ -65,7 +65,8 @@ import {
     MdSettingsSuggest,
     MdOutlineWorkOutline,
     MdOutlineIntegrationInstructions,
-    MdOutlineDeviceHub
+    MdOutlineDeviceHub,
+    MdOutlineContentCopy
 } from 'react-icons/md'
 
 import {
@@ -215,6 +216,7 @@ const constants = {
     MdSettingsSuggest,
     MdKeyboardArrowDown,
     MdKeyboardArrowUp,
+    MdOutlineContentCopy,
     FiAlertCircle,
     FiEdit,
     VscEditorLayout,

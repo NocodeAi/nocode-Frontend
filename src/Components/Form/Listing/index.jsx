@@ -25,11 +25,24 @@ export default (props) => {
     const [open, setOpen] = useState(false);
     const [id, setId] = useState("")
     const [name, setName] = useState("")
+    const [copied, setCopied] = useState(false)
 
     const handleDialogOpen = (e, id, name) => {
         setId(id)
         setName(name)
         setOpen(true)
+    }
+
+    const copyUrl = async (e, url) => {
+        setCopied(false)
+        try {
+            await navigator.clipboard.writeText(url);
+            setCopied(true)
+        }
+        catch (e) {
+            setCopied(false)
+        }
+
     }
 
     const getData = async () => {
@@ -48,8 +61,9 @@ export default (props) => {
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
-                    <TableRow>
+                    <TableRow sx={{fontWeight: "bold"}}>
                         <TableCell>Form Name</TableCell>
+                        <TableCell>URL</TableCell>
                         <TableCell align="right">Created On</TableCell>
                         <TableCell align="right">Modified On</TableCell>
                         <TableCell align="right">Actions</TableCell>
@@ -63,6 +77,12 @@ export default (props) => {
                         >
                             <TableCell component="th" scope="row">
                                 <a href={`${RENDER_FORM}?tk=${row.token}`} target="_blank">{row.name}</a>
+                            </TableCell>
+                            <TableCell>
+                                <div style={{display: "flex"}}>
+                                    <label style={{marginRight: "4px"}}>{`${RENDER_FORM}?tk=${row.token}`.slice(0, 80)}{`${RENDER_FORM}?tk=${row.token}`.length > 80 ? "..." : ""}</label>
+                                    <constants.MdOutlineContentCopy onClick={(e) => copyUrl(e, `${RENDER_FORM}?tk=${row.token}`)} style={{color: "#027ef8", cursor: "pointer"}} />
+                                </div>
                             </TableCell>
                             <TableCell align="right">{row?.created_at}</TableCell>
                             <TableCell align="right">{row?.updated_at}</TableCell>
