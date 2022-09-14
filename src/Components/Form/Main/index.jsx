@@ -21,6 +21,7 @@ function Main(props) {
             <Titlebar />
             <div style={{ display: "flex", paddingTop: "16px", paddingLeft: "36px", paddingRight: "36px" }}>
                 {formCards.map((c) => {
+                    return <ViewMoreCard key={c?.id} label={c?.label} link={c?.link} style={{ margin: "4px" }} />
                 })}
             </div>
         </div>
