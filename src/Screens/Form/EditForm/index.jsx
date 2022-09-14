@@ -40,7 +40,7 @@ export default () => {
   return (
     <>
       <Header />
-      <FormBuilder setElements={setElements} elements={elements} />
+      <FormBuilder setElements={setElements} form_id={location.state.form_id} elements={elements} />
       {/* <Footer /> */}
     </>
   );

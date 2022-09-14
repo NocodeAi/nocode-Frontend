@@ -15,6 +15,7 @@ export default function FormBuilder(props) {
     <div className="formbuilder">
       <Sidebar />
       <Base
+        form_id={props?.form_id}
         elements={props?.elements}
         setNodeProperty={setNodeProperty}
         setPropertyVisible={setPropertyVisible}

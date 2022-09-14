@@ -204,7 +204,7 @@ function Base(props) {
         })
 
         try {
-            await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "properties": JSON.stringify(data),"project_id": selectedProject?.id ,expire:'10h'}, {
+            await axios.post(`${SAVE_FORM}`, {"name": props?.elements?.formName, "formId": props?.form_id, "properties": JSON.stringify(data),"project_id": selectedProject?.id ,expire:'10h'}, {
                 header: {
                     'Content-Type': 'application/json'
                 }

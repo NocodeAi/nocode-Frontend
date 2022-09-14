@@ -231,7 +231,8 @@ const handleElements = (getType, position, getId, dataProperties, dataDelete) =>
         id: getId,
         size: "12px",
         label: "Default",
-        align: "left"
+        align: "left",
+        validate: "none"
     }
 
     const modal = {
