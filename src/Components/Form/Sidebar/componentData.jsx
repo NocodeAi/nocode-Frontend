@@ -7,7 +7,7 @@ import {
     Navigation, 
     Utils,
     Form,
-    Groups
+    PersonalIdentity
 } from './Elements';
 import {constants} from '../../../Utils/constants'
 
@@ -37,7 +37,7 @@ let componentData = [
     id: "7", open: false, name: "Utils", Component: Utils, Icon: constants.MdKeyboardArrowDown
   },
   {
-    id: "8", open: false, name: "Gruops", Component: Groups, Icon: constants.MdKeyboardArrowDown
+    id: "8", open: false, name: "Personal Identity", Component: PersonalIdentity, Icon: constants.MdKeyboardArrowDown
   }
 ]
 

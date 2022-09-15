@@ -118,7 +118,8 @@ import {
     BsStackOverflow,
     BsEyeglasses,
     BsGearFill,
-    BsBoundingBox
+    BsBoundingBox,
+    BsFillPersonFill
 } from 'react-icons/bs';
 
 import {
@@ -201,6 +202,7 @@ const constants = {
     BsBoxArrowUpRight,
     BsCalendarDate,
     BsGearFill,
+    BsFillPersonFill,
     BiRadioCircleMarked,
     BiRectangle,
     AiOutlineEdit,

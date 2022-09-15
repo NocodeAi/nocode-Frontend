@@ -30,6 +30,7 @@ import Badge from './Badge';
 import Progress from './Progress';
 import ImageList from './ImageList';
 import PersonalGroup from './PersonalGroup';
+import { PersonalIdentity } from './PersonalIdentity';
 
 
 export {
@@ -64,5 +65,6 @@ export {
     Badge,
     Progress,
     ImageList,
-    PersonalGroup
+    PersonalGroup,
+    PersonalIdentity
 }

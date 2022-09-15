@@ -29,7 +29,8 @@ import {
     Badge,
     Progress,
     ImageList,
-    PersonalGroup
+    PersonalGroup,
+    PersonalIdentity
 } from '../Nodes'
 
 const handleElements = (getType, position, getId, dataProperties, dataDelete) => {
@@ -425,6 +426,33 @@ const handleElements = (getType, position, getId, dataProperties, dataDelete) =>
 
     }
 
+    const fullname = {
+        component: PersonalIdentity.FullName,
+        type: getType,
+        selected: false,
+        position,
+        properties: dataProperties,
+        delete: dataDelete,
+        id: getId,
+        label: "Default",
+        first_name: "First Name",
+        middle_name: "Middle Name",
+        last_name: "Last Name"
+    }
+
+    const namepk = {
+        component: PersonalIdentity.NamePk,
+        type: getType,
+        selected: false,
+        position,
+        properties: dataProperties,
+        delete: dataDelete,
+        id: getId,
+        label: "Default",
+        first_name: "First Name",
+        family_name: "Family Name",
+    }
+
 
     const Components = {
         inputfield: inputField,
@@ -457,7 +485,9 @@ const handleElements = (getType, position, getId, dataProperties, dataDelete) =>
         image: uploadImage,
         imagelist: imageList,
         html,
-        personal:personalGroup
+        personal:personalGroup,
+        fullname,
+        namepk
     }
 
     return Components[getType]

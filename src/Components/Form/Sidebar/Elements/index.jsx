@@ -6,7 +6,7 @@ import Surfaces from './surfaces';
 import Navigation from './navigation';
 import Utils from './utils';
 import Form from './form'
-import Groups from './groups'
+import PersonalIdentity from './personalIdentity'
 
 
 export {
@@ -18,5 +18,5 @@ export {
     Navigation,
     Utils,
     Form,
-    Groups
+    PersonalIdentity
 }
