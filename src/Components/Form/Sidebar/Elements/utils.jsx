@@ -6,17 +6,22 @@ export default function Utils() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const elements = [
+        { id: "0", name: "Rich Text Editor", type: "rtf", icon: constants.FiEdit },
+        { id: "1", name: "Modal", type: "modal", icon: constants.BsBoxArrowUpRight },
+        { id: "2", name: "Swimlane", type: "swimlane", icon: constants.FaGripLines }
+    ]
+
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'rtf')} draggable>
-                <constants.FiEdit className='sidebar-icons' /><span>Rich Text Editor</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'modal')} draggable>
-                <constants.BsBoxArrowUpRight className='sidebar-icons' /><span>Modal</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'swimlane')} draggable>
-                <constants.FaGripLines className='sidebar-icons' /><span>Swimlane</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

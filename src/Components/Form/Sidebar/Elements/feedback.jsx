@@ -6,17 +6,22 @@ export default function Feedback() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const elements = [
+        { id: "0", name: "Alert", type: "alert", icon: constants.FiAlertCircle },
+        { id: "1", name: "Progress", type: "progress", icon: constants.CgLoadbar },
+        { id: "2", name: "Rating", type: "rating", icon: constants.AiFillStar }
+    ]
+
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'alert')} draggable>
-                <constants.FiAlertCircle className='sidebar-icons' /><span>Alert</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'progress')} draggable>
-                <constants.CgLoadbar className='sidebar-icons' /><span>Progress</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'rating')} draggable>
-                <constants.AiFillStar className='sidebar-icons' /><span>Rating</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

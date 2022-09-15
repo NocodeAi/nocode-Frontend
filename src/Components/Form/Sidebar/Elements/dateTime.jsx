@@ -6,14 +6,21 @@ export default function DateTime() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+    
+    const elements = [
+        { id: "0", name: "Date", type: "datepicker", icon: constants.BsCalendarDate },
+        { id: "1", name: "Time", type: "timepicker", icon: constants.BiTimeFive }
+    ]
+
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'datepicker')} draggable>
-                <constants.BsCalendarDate className='sidebar-icons' /><span>Date</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'timepicker')} draggable>
-                <constants.BiTimeFive className='sidebar-icons' /><span>Time</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

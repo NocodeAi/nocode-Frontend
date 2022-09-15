@@ -6,38 +6,29 @@ export default function Input() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const elements = [
+        { id: "1", name: "Input Field", type: "inputfield", icon: constants.AiOutlineEdit },
+        { id: "2", name: "Dropdown", type: "dropdown", icon: constants.FaRegListAlt },
+        { id: "3", name: "Button", type: "button", icon: constants.FaRegSquare },
+        { id: "4", name: "Toggle Button", type: "togglebutton", icon: constants.BsSquareHalf },
+        { id: "5", name: "Label", type: "label", icon: constants.FaHeading },
+        { id: "6", name: "Checkbox", type: "checkbox", icon: constants.AiOutlineCheckCircle },
+        { id: "7", name: "Radio Button", type: "radiobutton", icon: constants.BiRadioCircleMarked },
+        { id: "9", name: "Text Area", type: "textarea", icon: constants.BsTextareaT },
+        { id: "10", name: "HTML", type: "html", icon: constants.BsCodeSlash },
+        { id: "12", name: "Switch", type: "switch", icon: constants.MdToggleOn }
+    ]
+    
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'inputfield')} draggable>
-                <constants.AiOutlineEdit className='sidebar-icons' /><span>Input Field</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'dropdown')} draggable>
-                <constants.FaRegListAlt className='sidebar-icons' /><span>Dropdown</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'button')} draggable>
-                <constants.FaRegSquare className='sidebar-icons' /><span>Button</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'togglebutton')} draggable>
-                <constants.BsSquareHalf className='sidebar-icons' /><span>Toggle Button</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'label')} draggable>
-                <constants.FaHeading className='sidebar-icons' /><span>Label</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'checkbox')} draggable>
-                <constants.AiOutlineCheckCircle className='sidebar-icons' /><span>Checkbox</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'radiobutton')} draggable>
-                <constants.BiRadioCircleMarked className='sidebar-icons' /><span>Radio Button</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'textarea')} draggable>
-                <constants.BsTextareaT className='sidebar-icons' /><span>Text Area</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'html')} draggable>
-                <constants.BsCodeSlash className='sidebar-icons' /><span>HTML</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'switch')} draggable>
-                <constants.MdToggleOn className='sidebar-icons' /><span>Switch</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

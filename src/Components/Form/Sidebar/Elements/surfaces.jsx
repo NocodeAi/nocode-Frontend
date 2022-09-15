@@ -6,17 +6,22 @@ export default function Surfaces() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const elements = [
+        { id: "0", name: "Accordion", type: "accordion", icon: constants.MdOutlineArrowDropDownCircle },
+        { id: "1", name: "Container", type: "container", icon: constants.FaRegWindowMaximize },
+        { id: "2", name: "Transfer List", type: "transferlist", icon: constants.BsArrowLeftRight }
+    ]
+
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'accordion')} draggable>
-                <constants.MdOutlineArrowDropDownCircle className='sidebar-icons' /><span>Accordion</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'container')} draggable>
-                <constants.FaRegWindowMaximize className='sidebar-icons' /><span>Container</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'transferlist')} draggable>
-                <constants.BsArrowLeftRight className='sidebar-icons' /><span>Transfer List</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

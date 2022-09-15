@@ -6,26 +6,25 @@ export default function DataDisplay() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const elements = [
+        { id: "0", name: "Image", type: "image", icon: constants.BsCardImage },
+        { id: "1", name: "Avatar", type: "avatar", icon: constants.MdOutlineTagFaces },
+        { id: "2", name: "Badge", type: "badge", icon: constants.RiNotificationBadgeLine },
+        { id: "3", name: "HTML", type: "html", icon: constants.BsCodeSlash },
+        { id: "4", name: "Image List", type: "imagelist", icon: constants.BsImages },
+        { id: "5", name: "Spacer", type: "spacer", icon: constants.BsArrowsExpand }
+    ]
+
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'image')} draggable>
-                <constants.BsCardImage className='sidebar-icons' /><span>Image</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'avatar')} draggable>
-                <constants.MdOutlineTagFaces className='sidebar-icons' /><span>Avatar</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'badge')} draggable>
-                <constants.RiNotificationBadgeLine className='sidebar-icons' /><span>Badge</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'html')} draggable>
-                <constants.BsCodeSlash className='sidebar-icons' /><span>HTML</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'imagelist')} draggable>
-                <constants.BsImages className='sidebar-icons' /><span>Image List</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'spacer')} draggable>
-                <constants.BsArrowsExpand className='sidebar-icons' /><span>Spacer</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

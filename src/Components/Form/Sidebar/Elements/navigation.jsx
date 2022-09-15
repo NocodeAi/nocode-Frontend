@@ -6,17 +6,22 @@ export default function Navigation() {
         event.dataTransfer.setData('field', fieldType);
         event.dataTransfer.effectAllowed = 'move';
     };
+
+    const elements = [
+        { id: "0", name: "Link", type: "link", icon: constants.MdOutlineLink },
+        { id: "1", name: "Breadcrumbs", type: "breadcrumbs", icon: constants.CgArrowsExchange },
+        { id: "2", name: "Tabs", type: "tabs", icon: constants.CgTab }
+    ]
+
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'link')} draggable>
-                <constants.MdOutlineLink className='sidebar-icons' /><span>Link</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'breadcrumbs')} draggable>
-                <constants.CgArrowsExchange className='sidebar-icons' /><span>Breadcrumbs</span>
-            </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'tabs')} draggable>
-                <constants.CgTab className='sidebar-icons' /><span>Tabs</span>
-            </div>
+            {elements?.map((el) => {
+                return (
+                    <div key={el?.id} className='form-field-palette' onDragStart={(event) => onDragStart(event, el?.type)} draggable>
+                        <el.icon className='sidebar-icons' /><span>{el?.name}</span>
+                    </div>
+                )
+            })}
         </>
     )
 }

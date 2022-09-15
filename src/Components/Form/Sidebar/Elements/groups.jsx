@@ -8,13 +8,13 @@ export default function Groups() {
     };
     return (
         <>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'personal')} draggable>
+            <div className='form-field-palette' onDragStart={(event) => onDragStart(event, 'personal')} draggable>
                 <constants.FiEdit className='sidebar-icons' /><span>Personal Information</span>
             </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'modal')} draggable>
+            <div className='form-field-palette' onDragStart={(event) => onDragStart(event, 'modal')} draggable>
                 <constants.BsBoxArrowUpRight className='sidebar-icons' /><span>Modal</span>
             </div>
-            <div className='field-palette' onDragStart={(event) => onDragStart(event, 'swimlane')} draggable>
+            <div className='form-field-palette' onDragStart={(event) => onDragStart(event, 'swimlane')} draggable>
                 <constants.FaGripLines className='sidebar-icons' /><span>Swimlane</span>
             </div>
         </>
